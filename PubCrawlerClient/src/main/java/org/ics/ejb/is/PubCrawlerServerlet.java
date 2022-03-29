@@ -43,7 +43,7 @@ public class PubCrawlerServerlet extends HttpServlet {
 		out.println("<meta charset=\"ISO-8859-1\"></head>");
 		out.println("<body>");
 		out.println("<h1>Beer lovers unite!</h1>");
-		out.println("<h2>" + facade.findPubName("Ariman").getLocation() + "</h1>");
+		out.println("<h2>" + facade.findPubName("Inferno").getLocation() + "</h1>");
 		out.println("</body></html>");
 	}
 
