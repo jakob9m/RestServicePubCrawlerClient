@@ -1,9 +1,12 @@
 package org.ics.eao;
 
+import java.util.ArrayList;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.ics.ejb.Beer;
 import org.ics.ejb.Pub;
@@ -13,7 +16,7 @@ import org.ics.ejb.Pub;
  */
 @Stateless
 @LocalBean
-public class PubCrawlerEAOImpl implements PubCrawlerEAOImplRemote, PubCrawlerEAOImplLocal {
+public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 
 	@PersistenceContext(unitName = "LabEJBSql")
 	private EntityManager em;
@@ -22,11 +25,58 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplRemote, PubCrawlerEAO
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pub findPubName(String pubName) {
+	public Beer createBeer(Beer beer) {
+		em.persist(beer);
+		return beer;
+	}
+
+	public Beer updateBeer(Beer beer) {
+		em.merge(beer);
+		return beer;
+	}
+
+	public void deleteBeer(String name) {
+		Beer b = this.findBeer(name);
+		if (b != null) {
+			em.remove(b);
+		}
+	}
+	
+	public Pub createPub(Pub pub) {
+		em.persist(pub);
+		return pub;
+	}
+
+	public Pub updatePub(Pub pub) {
+		em.merge(pub);
+		return pub;
+	}
+
+	public void deletePub(String name) {
+		Pub p = this.findPub(name);
+		if (p != null) {
+			em.remove(p);
+		}
+	}
+	
+	public Pub findPub(String pubName) {
 		return em.find(Pub.class, pubName);
 	}
 
-	public Beer findBeerName(String beerName) {
+	public Beer findBeer(String beerName) {
 		return em.find(Beer.class, beerName);
 	}
+
+	public ArrayList<Pub>getAllPubs() {
+		TypedQuery<Pub> tq = em.createNamedQuery("Pub.findAll", Pub.class);
+		ArrayList<Pub> pubs = (ArrayList<Pub>) tq.getResultList();
+		return pubs;
+		}
+	
+	public ArrayList<Beer>getAllBeers() {
+		TypedQuery<Beer> tq = em.createNamedQuery("Beer.findAll", Beer.class);
+		ArrayList<Beer> beers = (ArrayList<Beer>) tq.getResultList();
+		return beers;
+		}
+
 }
