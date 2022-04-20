@@ -34,7 +34,6 @@ $(document).ready(function() {
 			function ajaxAddReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub added");
-				console.log("Nah");
 			}
 			function ajaxAddReturnError(result, status, xhr) {
 				alert("Error Add");
@@ -42,16 +41,18 @@ $(document).ready(function() {
 			}
 		}
 	})//addbtnclick
-	$("#UpdateBtn").click(function() {
-		var strId = $("#id").val();
-		var strTitle = $("#title").val();
-		var strPrice = $("#price").val();
-		var obj = { id: strId, title: strTitle, price: strPrice };
+	$("#updatePub").click(function() {
+		alert("Button pressed");
+		console.log("Button pressed");
+		var strPubName = $("#pubName").val();
+		var strPubAddress = $("#pubAddress").val();
+		var vibe = "Cozy";
+		var obj = { pubName: strPubName, location: strPubAddress, vibeName: vibe };
 		var jsonString = JSON.stringify(obj);
-		if (strId != "") {
+		if (strPubName  != "") {
 			$.ajax({
 				method: "PUT",
-				url: "http://localhost:8080/RestServerMovieProject/Movies/" + strId,
+				url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
 				data: jsonString,
 				dataType: 'json',
 				error: ajaxUpdateReturnError,
@@ -59,31 +60,35 @@ $(document).ready(function() {
 			})
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
 				clearFields();
-				$("#title").attr("placeholder", "Movie updated");
+				$("#pubName").attr("placeholder", "Pub updated");
 			}
 			function ajaxUpdateReturnError(result, status, xhr) {
 				alert("Error Update");
-				console.log("Ajax-find movie: " + status);
+				console.log("Ajax-find: " + status);
 			}
 		}
 	})//uppdatebtnclick
 
-	$("#DeleteBtn").click(function() {
-		var strValue = $("#id").val();
-		if (strValue != "") {
+	$("#deletePub").click(function() {
+		var pubName = $("#pubName").val();
+		var obj = {pubName: pubName};
+		var jsonString = JSON.stringify(obj);
+		if (pubName != "") {
 			$.ajax({
 				method: "DELETE",
-				url: "http://localhost:8080/RestServerMovieProject/Movies/" + strValue,
+				data: jsonString,
+				url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
 				error: ajaxDelReturnError,
 				success: ajaxDelReturnSuccess
 			})
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
-				$("#title").attr("placeholder", "Movie deleted");
+				alert("Deleted");
+				$("#pubName").attr("placeholder", "Pub deleted");
 			}
 			function ajaxDelReturnError(result, status, xhr) {
 				alert("Error");
-				console.log("Ajax-find movie: " + status);
+				console.log("Ajax-find: " + status);
 			}
 		}
 	})//btnclick
@@ -100,7 +105,7 @@ function ParseJsonFileBeer(result) {
 }
 function clearFields() {
 	$("#pubName").val("");
-	$("#pubAdress").val("");
+	$("#pubAddress").val("");
 	$("#beerName").val("");
 	$("#beerPrice").val("");
 	$("#beerType").val("");

@@ -1,5 +1,5 @@
-<%@ page import="javax.ejb.EJB"%>
 <%@ page import="org.ics.ejb.Pub"%>
+<%@ page import="org.ics.ejb.Beer"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
