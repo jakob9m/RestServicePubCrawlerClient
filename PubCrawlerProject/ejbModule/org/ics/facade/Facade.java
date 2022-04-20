@@ -42,8 +42,8 @@ public class Facade implements FacadeLocal {
 		return PubCrawlerEAO.updatePub(pub);
 	}
 	
-	public void deletePub(String name) {
-		PubCrawlerEAO.deletePub(name);
+	public void deletePub(String pubName) {
+		PubCrawlerEAO.deletePub(pubName);
 	}
 	
 	public Beer createBeer(Beer beer) {
@@ -54,8 +54,8 @@ public class Facade implements FacadeLocal {
 		return PubCrawlerEAO.updateBeer(beer);
 	}
 	
-	public void deleteBeer(String name) {
-		PubCrawlerEAO.deleteBeer(name);
+	public void deleteBeer(String beerName) {
+		PubCrawlerEAO.deleteBeer(beerName);
 	}
 
 	public ArrayList<Beer>getAllBeers() {

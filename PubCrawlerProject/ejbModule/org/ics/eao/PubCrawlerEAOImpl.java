@@ -35,10 +35,10 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 		return beer;
 	}
 
-	public void deleteBeer(String name) {
-		Beer b = this.findBeer(name);
-		if (b != null) {
-			em.remove(b);
+	public void deleteBeer(String beerName) {
+		Beer beer = this.findBeer(beerName);
+		if (beer != null) {
+			em.remove(beer);
 		}
 	}
 	
@@ -52,10 +52,10 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 		return pub;
 	}
 
-	public void deletePub(String name) {
-		Pub p = this.findPub(name);
-		if (p != null) {
-			em.remove(p);
+	public void deletePub(String pubName) {
+		Pub pub = this.findPub(pubName);
+		if (pub != null) {
+			em.remove(pub);
 		}
 	}
 	
