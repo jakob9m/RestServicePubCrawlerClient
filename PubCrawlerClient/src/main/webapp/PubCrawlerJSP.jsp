@@ -79,7 +79,7 @@
 		</div>
 		<div class="column" style="width: 10%">
 			<p>
-				<input type="text" id="beername" placeholder="Beer name"></input>
+				<input type="text" id="beerName" placeholder="Beer name"></input>
 			</p>
 			<p>
 				<input type="text" id="beerPrice" placeholder="Price"></input>

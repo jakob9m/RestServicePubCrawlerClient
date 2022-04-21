@@ -56,26 +56,9 @@ public class PubCrawlerServerlet extends HttpServlet {
 //		out.println("</body></html>");
 //	}
 
-///--------ANPASSA--------------------	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		String pathInfo = request.getPathInfo();
-//		if (pathInfo == null || pathInfo.equals("/")) {
-//			System.out.println("Alla");
-//			System.out.println(pathInfo);
-//			ArrayList<Pub> allPubs = facade.getAllPubs();
-//			sendAsJson(response, allPubs);
-//			return;
-//		}
-//		String[] splits = pathInfo.split("/");
-//		if (splits.length != 2) {
-//			System.out.println("Alla2");
-//			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-//			return;
-//		}
-//		String id = splits[1];
-//		Pub pub = facade.findByMovieId(Integer.parseInt(id));
-//		sendAsJson(response, movie);
+
 	}
 
 	/**
@@ -84,7 +67,9 @@ public class PubCrawlerServerlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BufferedReader reader = request.getReader();// Läs data Json
+
+		BufferedReader reader = request.getReader();
+
 		Pub p = parseJsonPub(reader);
 		try {
 			p = facade.createPub(p);
@@ -93,6 +78,17 @@ public class PubCrawlerServerlet extends HttpServlet {
 		}
 		sendAsJson(response, p);
 		doGet(request, response);
+		
+//			Beer b = parseJsonBeer(reader);
+//			try {
+//				b = facade.createBeer(b);
+//			} catch (Exception e) {
+//				System.out.println("duplicate key");
+//			}
+//			sendAsJson(response, b);
+//			doGet(request, response);
+//		}
+
 	}
 
 	/**
@@ -101,14 +97,38 @@ public class PubCrawlerServerlet extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BufferedReader reader = request.getReader();
-		Pub p = parseJsonPub(reader);
-		// Uppdatera i db
-		try {
-			p = facade.updatePub(p);
-		} catch (Exception e) {
-			System.out.println("facade Update Error");
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(reader);
+		jsonRoot = jsonReader.readObject();
+
+		if (jsonRoot.getString("iAm").equals("Pub")) {
+			Pub p = facade.findPub(jsonRoot.getString("PubName"));
+			try {
+				p = facade.updatePub(p);
+			} catch (Exception e) {
+				System.out.println("facade Update Error");
+			}
+
+		} else if (jsonRoot.getString("iAm").equals("Beer")) {
+			Beer b = facade.findBeer(jsonRoot.getString("beerName"));
+			try {
+				b = facade.updateBeer(b);
+			} catch (Exception e) {
+				System.out.println("facade Update Error");
+			}
 		}
-		sendAsJson(response, p);
+//		Pub p = parseJsonPub(reader);
+//		// Uppdatera i db
+		// sendAsJson(response, p);
+//		Beer b = parseJsonBeer(reader);
+//		// Uppdatera i db
+//		try {
+//			b = facade.updateBeer(b);
+//		} catch (Exception ex) {
+//			System.out.println("facade Update Error");
+//		}
+//		sendAsJson(response, b);
 	}
 
 	/**
@@ -117,10 +137,9 @@ public class PubCrawlerServerlet extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BufferedReader reader = request.getReader();
-		String pubName = parseJsonString(reader);
-		if (pubName != null) {
-			facade.deletePub(pubName);
-		}
+		String toBeDeleted = parseJsonString(reader); // Den här tar nu bort både pub och beer oavsett - suboptimalt
+		facade.deletePub(toBeDeleted);
+		facade.deleteBeer(toBeDeleted);
 	}
 
 	private void sendAsJson(HttpServletResponse response, Pub pub) throws IOException {
@@ -139,38 +158,62 @@ public class PubCrawlerServerlet extends HttpServlet {
 		out.flush();
 	}
 
-	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
+	// Onödig?
+	private void sendAsJson(HttpServletResponse response, Beer beer) throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
-		if (pubs != null) {
-			JsonArrayBuilder array = Json.createArrayBuilder();
-			for (Pub p : pubs) {
-				if (p != null) {
-					JsonObjectBuilder o = Json.createObjectBuilder();
-					o.add("pubName", String.valueOf(p.getpubName()));
-					o.add("location", p.getLocation());
-					o.add("vibeName", "Cozy");
-					array.add(o);
-				}
-			}
-			JsonArray jsonArray = array.build();
-			System.out.println(jsonArray);
-			out.print(jsonArray);
+		if (beer != null) {
+			out.print("{\"name\":");
+			out.print("\"" + beer.getBeer() + "\"");
+			out.print(",\"address\":");
+			out.print("\"" + beer.getPrice() + "\"");
+			out.print(",\"vibe\":");
+			out.print("\"" + beer.getType() + "\"}");
 		} else {
-			out.print("[]");
+			out.print("{ }");
 		}
 		out.flush();
 	}
+
+//	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
+//		PrintWriter out = response.getWriter();
+//		response.setContentType("application/json");
+//		if (pubs != null) {
+//			JsonArrayBuilder array = Json.createArrayBuilder();
+//			for (Pub p : pubs) {
+//				if (p != null) {
+//					JsonObjectBuilder o = Json.createObjectBuilder();
+//					o.add("pubName", String.valueOf(p.getpubName()));
+//					o.add("location", p.getLocation());
+//					o.add("vibeName", "Cozy");
+//					array.add(o);
+//				}
+//			}
+//			JsonArray jsonArray = array.build();
+//			System.out.println(jsonArray);
+//			out.print(jsonArray);
+//		} else {
+//			out.print("[]");
+//		}
+//		out.flush();
+//	}
 
 	private String parseJsonString(BufferedReader br) { // Integrera den här i doDelete istället?
 		JsonReader jsonReader = null;
 		JsonObject jsonRoot = null;
 		jsonReader = Json.createReader(br);
 		jsonRoot = jsonReader.readObject();
-		String pubName = jsonRoot.getString("pubName");
-		return pubName;
+		if (jsonRoot.getString("iAm").equals("Beer")) {
+			String beerName = jsonRoot.getString("beerName");
+			return beerName;
+		} else if (jsonRoot.getString("iAm").equals("Pub")) {
+			String pubName = jsonRoot.getString("pubName");
+			return pubName;
+		} else {
+			return "";
+		}
 	}
-	
+
 	private Pub parseJsonPub(BufferedReader br) {
 		// javax.json-1.0.4.jar
 		JsonReader jsonReader = null;
@@ -184,7 +227,7 @@ public class PubCrawlerServerlet extends HttpServlet {
 		pub.setVibe("Cozy");
 		return pub;
 	}
-	
+
 	private Beer parseJsonBeer(BufferedReader br) {
 		// javax.json-1.0.4.jar
 		JsonReader jsonReader = null;
