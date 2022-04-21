@@ -97,12 +97,12 @@
             <label for="beerPrice" class="u-label">Price:</label>
             <input type="text" placeholder="Price" id="beerPrice" name="price" class="txtPrice">
           </div>
-          <div class="u-form-group u-form-name u-label-none u-form-group-3">
+          <div class="">
             <label for="beerType" class="u-label">Type: </label>
             <input type="text" placeholder="Type" id="beerType" name="type" class="txtType">
           </div>
           <div>
-            <input type="submit" value="Add Beer" class="btnAddBeer">
+            <input type="submit" value="Add Beer" id="addBeer" class="btnAddBeer">
           </div>
         </form>
       </div>
@@ -112,25 +112,27 @@
             <label for="pubName">Name:</label>
             <input type="text" placeholder="Pub name" id="pubName" name="name" class="TxtPubName">
           </div>
-          <div class="AddressDiv">
+          <div class="">
             <label for="pubAddress" class="addressLabel">Address:</label>
             <input type="text" placeholder="Address" id="pubAddress" name="address" class="TxtPubAddress">
           </div>
           <div class="">
-            <input type="submit" value="Add pub" class="btnAddPub">
+            <input type="submit" value="Add pub" id="addPub" class="btnAddPub">
           </div>
         </form>
       </div>
-      <input type="submit" class="btnUpdateSelPub" value="Update selected pub">
+      <input type="submit" class="btnUpdateSelPub" id="updatePub" value="Update selected pub">
         <br>
-      <input type="submit" class="btnUpdateSelPub" value="Update selected beer">
+      <input type="submit" class="btnUpdateSelBeer" id="updateBeer" value="Update selected beer">
       <br>
-      <input type="submit" class="btnUpdateSelPub" value="Add beer to selected pub">
+      <input type="submit" class="btnAddBeerToSelPub" id="addBeerToPub" value="Add beer to selected pub">
         <br>
-      <input type="submit" class="btnUpdateSelPub" value="Delete selected pub">
+      <input type="submit" class="btnDeleteSelPub" id="deletePub" value="Delete selected pub">
         <br>
-      <input type="submit" class="btnUpdateSelPub" value="Delete selected Beer">
+      <input type="submit" class="btnDeleteSelBeer" id="deleteBeer" value="Delete selected Beer">
         <br>
+        <section class="InfoBox"> LOREM IS OKAY
+        </section>
     </section>
     <section class="">
     </section>

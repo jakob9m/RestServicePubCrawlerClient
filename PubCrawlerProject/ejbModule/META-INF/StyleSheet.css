@@ -24,6 +24,16 @@ body {
 						20px 20px #000000;
 }
 
+.InfoBox {
+	padding: 10px; border: 2px solid #ff1f8f;
+	border-width: 2px; 
+	width: 35; 
+	height: 123; 
+	    position:relative; left:575px; top:-500px; right:0; bottom:2000; 
+	    font-size:16px
+	
+}
+
 .pubsTitle {
 	  font-weight: 700;
   font-size: 2rem;
@@ -76,6 +86,7 @@ body {
 	    border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
+   color:white; 
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -87,6 +98,7 @@ body {
 	   border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
+    color:white; 
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
