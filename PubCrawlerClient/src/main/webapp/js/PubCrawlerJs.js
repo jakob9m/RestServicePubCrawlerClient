@@ -1,24 +1,12 @@
 $(document).ready(function() {
-	//$("#showPubs").click(function() {
-		//$.ajax({
-			//method: "GET",
-			//url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
-			//error: ajaxFindReturnError,
-			//success: ajaxFindReturnSuccess
-		//})
-		//function ajaxFindReturnSuccess(result, status, xhr) {
-			//ParseJsonFilePub(result);
-		//}
-		//function ajaxFindReturnError(result, status, xhr) {
-			//alert("Error");
-			//console.log("Ajax-find movie: " + status);
-		//}
-	//})//btnclick
+	window.onload = function() {
+		getPubs();
+	};
+
 	$("#addPub").click(function() {
 		var pubName = $("#pubName").val();
 		var pubAddress = $("#pubAddress").val();
-		var vibe = "Cozy";
-		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, beerName: null, beerPrice: null, beerType: null, kind: "Pub"};
+		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", beerName: null, beerPrice: null, beerType: null, kind: "Pub" };
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "" && pubAddress != "") {
 			$.ajax({
@@ -32,6 +20,7 @@ $(document).ready(function() {
 			function ajaxAddReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub added");
+				getPubs();
 			}
 			function ajaxAddReturnError(result, status, xhr) {
 				alert("Error Add");
@@ -39,13 +28,14 @@ $(document).ready(function() {
 			}
 		}
 	})//addbtnclick
+
 	$("#addBeer").click(function() {
 		var beerName = $("#beerName").val();
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer"};
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
-		if (beerName  != "" && beerPrice != "" && beerType != ""){
+		if (beerName != "" && beerPrice != "" && beerType != "") {
 			$.ajax({
 				method: "POST",
 				url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
@@ -67,8 +57,7 @@ $(document).ready(function() {
 	$("#updatePub").click(function() {
 		var pubName = $("#pubName").val();
 		var pubAddress = $("#pubAddress").val();
-		var vibe = "Cozy";
-		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, beerName: null, beerPrice: null, beerType: null, kind: "Pub"};
+		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", beerName: null, beerPrice: null, beerType: null, kind: "Pub" };
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "" && pubAddress != "") {
 			$.ajax({
@@ -82,6 +71,7 @@ $(document).ready(function() {
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub updated");
+				getPubs();
 			}
 			function ajaxUpdateReturnError(result, status, xhr) {
 				alert("Error Update");
@@ -93,9 +83,9 @@ $(document).ready(function() {
 		var beerName = $("#beerName").val();
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer"};
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
-		if (beerName  != "" && beerPrice != "" && beerType != ""){
+		if (beerName != "" && beerPrice != "" && beerType != "") {
 			$.ajax({
 				method: "PUT",
 				url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
@@ -117,7 +107,7 @@ $(document).ready(function() {
 
 	$("#deletePub").click(function() {
 		var pubName = $("#pubName").val();
-		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, beerName: null, beerPrice: null, beerType: null, kind: "Pub"};
+		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", beerName: null, beerPrice: null, beerType: null, kind: "Pub" };
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "") {
 			$.ajax({
@@ -130,6 +120,7 @@ $(document).ready(function() {
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub deleted");
+				getPubs();
 			}
 			function ajaxDelReturnError(result, status, xhr) {
 				alert("Error");
@@ -139,7 +130,7 @@ $(document).ready(function() {
 	})//btnclick
 	$("#deleteBeer").click(function() {
 		var beerName = $("#beerName").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer"};
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "") {
 			$.ajax({
@@ -161,6 +152,29 @@ $(document).ready(function() {
 	})//btnclick
 
 });//End ready function
+
+function getPubs() {
+	$.ajax({
+		method: "GET",
+		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
+		error: ajaxFindReturnError,
+		success: ajaxFindReturnSuccess
+	})
+	function ajaxFindReturnSuccess(result, status, xhr) {
+		//document.getElementById("pubList").removeChild();
+		var ul = document.getElementById("pubList");
+		result.forEach(function(e) {
+			console.log(e);
+			var li = document.createElement("li")
+			li.innerText = e.pubName;
+			ul.append(li);
+		})
+	}
+	function ajaxFindReturnError(result, status, xhr) {
+		alert("Error");
+		console.log("Ajax-find pubs: " + status);
+	}
+}
 
 function ParseJsonFilePub(result) {
 	$("#pubName").val(result.pubName);

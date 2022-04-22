@@ -47,7 +47,14 @@ public class PubCrawlerServerlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+//		System.out.println(facade.getAllPubs());
+		try {
+			ArrayList<Pub> allPubs = facade.getAllPubs();
+			System.out.println(allPubs);
+			sendAsJson(response, allPubs);			
+		} catch (Exception e) {
+			System.out.println("Något är wack med getAllPubs");
+		}	
 	}
 
 	/**
@@ -72,7 +79,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 				pub.setVibe("Cozy");
 				pub = facade.createPub(pub);
 				sendAsJson(response, pub);
-				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("Duplicate key");
 			}
@@ -84,7 +90,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 				beer.setType(jsonRoot.getString("beerType"));
 				beer = facade.createBeer(beer);
 				sendAsJson(response, beer);
-				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("Duplicate key");
 			}
@@ -109,7 +114,7 @@ public class PubCrawlerServerlet extends HttpServlet {
 				p.setLocation(jsonRoot.getString("location"));
 				p = facade.updatePub(p);
 				sendAsJson(response, p);
-				doGet(request, response);
+//				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
@@ -122,7 +127,7 @@ public class PubCrawlerServerlet extends HttpServlet {
 				b.setType(jsonRoot.getString("beerType"));
 				b = facade.updateBeer(b);
 				sendAsJson(response, b);
-				doGet(request, response);
+//				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
@@ -186,7 +191,39 @@ public class PubCrawlerServerlet extends HttpServlet {
 		}
 		out.flush();
 	}
+	
+	private ArrayList<String> getAllPubNames(){
+		ArrayList<String> pubNames= new ArrayList<String>();
+		ArrayList<Pub> pubs = facade.getAllPubs();
+		for(Pub p : pubs) {
+			String name = p.getpubName();
+			pubNames.add(name);
+		}
+		return pubNames;
+	}
 
+	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		if (pubs != null) {
+			JsonArrayBuilder array = Json.createArrayBuilder();
+			for (Pub p : pubs) {
+				if (p != null) {
+					JsonObjectBuilder o = Json.createObjectBuilder();
+					o.add("pubName", String.valueOf(p.getpubName()));
+					o.add("pubAddress", p.getLocation());
+					array.add(o);
+				}
+			}
+			JsonArray jsonArray = array.build();
+			System.out.println("Pub Rest: " + jsonArray);
+			out.print(jsonArray);
+		} else {
+			out.print("[]");
+		}
+		out.flush();
+	}
+	
 //	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
 //		PrintWriter out = response.getWriter();
 //		response.setContentType("application/json");

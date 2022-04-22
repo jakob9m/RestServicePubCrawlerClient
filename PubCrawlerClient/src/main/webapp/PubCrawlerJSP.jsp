@@ -50,8 +50,10 @@
 		<div class="column" style="width: 20%;">
 			<h2>Pubs</h2>
 			<hr></hr>
-			<p>List of every pub</p>
-			<input type="button" id="showPubs" value="Show all pubs"></input>
+			<div class=cointainer>
+				<ul id="pubList" name="pubList"></ul>
+			</div>
+
 		</div>
 		<div class="column" style="width: 10%">
 			<p>
