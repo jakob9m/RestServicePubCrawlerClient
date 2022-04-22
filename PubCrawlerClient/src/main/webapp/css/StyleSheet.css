@@ -1,107 +1,280 @@
-BeerTable
- {
-border: 1px solid; 
+BeerTable {
+	border: 1px solid;
 }
 
 body {
 	background-image: url('Beer-Backgrounds.jpg');
 	background-repeat: no-repeat;
-	  background-attachment: fixed;
-  background-size: cover;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 .pubCrawlerTitle {
-  font-weight: 600;
-  font-size: 3rem;
-  margin: 42px auto 0 calc(((100% - 1140px) / 2) + 439px);
-  transform: translate(-50%, -50%);
-	letter-spacing:0.1em;
--webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: white;
-  text-shadow: 
-						8px 8px #ff1f8f,
-						20px 20px #000000;
+	font-weight: 600;
+	font-size: 3rem;
+	position: relative;	
+	left: 725px;
+	top: 25px; 
+	margin: 42px auto 0 calc((( 100% - 1140px)/2)+ 439px);
+	transform: translate(-50%, -50%);
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
+}
+
+.btnAddBeer {
+	position: relative;
+	left: 500px;
+	width: 75px;
+	height: 25px;
+	border-radius: 10px; cursor : pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+	cursor: pointer;
+}
+
+.btnUpdateSelPub {
+	width: 150px;
+	height: 25px;
+	cursor: pointer;
+	border-radius: 10px;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnUpdateSelBeer {
+	width: 150px;
+	height: 25px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnAddBeerToSelPub {
+	width: 150px;
+	height: 25px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnDeleteSelPub {
+	width: 150px;
+	height: 25px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnDeleteSelBeer {
+	width: 150px;
+	height: 25px;
+	cursor: pointer;
+	border-radius: 10px; font-size : 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+	font-size: 10px;
+}
+
+.btnAddPub {
+	position: relative;
+	left: 500px;
+	border-radius: 10px;
+	width: 75px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
 }
 
 .InfoBox {
-	padding: 10px; border: 2px solid #ff1f8f;
-	border-width: 2px; 
-	width: 35; 
-	height: 123; 
-	    position:relative; left:575px; top:-500px; right:0; bottom:2000; 
-	    font-size:16px
-	
+	resize: none;
+	width: 20%;
+	float: left;
+	height: 200px;
+	width: 100%;
+	color: #ff1f8f;
+	border: 0 none;
+	border: none;
+	outline: none;
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+}
+
+.InfoBoxDiv {
+	position: relative;
+	left: 670px;
+	top: -200px;
+	height: 50px;
+	width: 25%;
+}
+
+.addressLabel {
+	color: white;
+	left: 500px;
+}
+
+.TxtPubName {
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.txtType {
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.txtPrice {
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.txtBeerName {
+	background-color: transparent;
+	border-radius: 0;
+	border: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.TxtPubAddress {
+	background-color: transparent;
+	border-radius: 0;
+ 	border: none; 
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
 }
 
 .pubsTitle {
-	  font-weight: 700;
-  font-size: 2rem;
-  	letter-spacing:0.1em;
--webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: white;
-  text-shadow: 
-						8px 8px #ff1f8f,
-						20px 20px #000000;
-    margin: -4px calc(((100% - 1140px) / 2) + 19px) 0 auto;
-    position:relative; left:300px; top:30px
-  
+	font-weight: 700;
+	font-size: 2rem;
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
+	margin: -4px calc((( 100% - 1140px)/2)+ 19px) 0 auto;
+	position: relative;
+	left: 300px;
+	top: 75px
 }
-
-.beerType {
-
-}
-
 
 .beersTitle {
-	 font-weight: 700;
-  font-size: 2rem;
-  margin: 0 auto;
-  position:relative; left:1400px; top:-50px;
-  	letter-spacing:0.1em;
--webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: white;
-  text-shadow: 
-						8px 8px #ff1f8f,
-						20px 20px #000000;
+	font-weight: 700;
+	font-size: 2rem;
+	margin: 0 auto;
+	position: relative;
+	left: 1400px;
+	top: -50px;
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
 }
 
 .infoTitle {
-	 font-weight: 700;
-  font-size: 2rem;
-  margin: 0 auto;
-    position:relative; left:700px; top:0px;
-  	letter-spacing:0.1em;
--webkit-text-fill-color: transparent;
-  -webkit-text-stroke-width: 3px;
-  -webkit-text-stroke-color: white;
-  text-shadow: 
-						8px 8px #ff1f8f,
-						20px 20px #000000;
+	font-weight: 700;
+	font-size: 2rem;
+	margin: 0 auto;
+	position: relative;
+	left: 700px;
+	top: 0px;
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
 }
 
 .PubTable {
-	    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-   color:white; 
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    position:relative; left:150px; top:-80px;
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	color: white;
+	font-family: sans-serif;
+	min-width: 400px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	position: relative;
+	left: 150px;
+	top: -45px;
 }
 
-
 .BeerTable {
-	   border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    color:white; 
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    position:relative; left:1250px; top:-150px;
-    
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	color: white;
+	font-family: sans-serif;
+	min-width: 400px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	position: relative;
+	left: 1250px;
+	top: -120px;
+}
+
+::placeholder {
+	color: White;
+	opacity: 1;
 }

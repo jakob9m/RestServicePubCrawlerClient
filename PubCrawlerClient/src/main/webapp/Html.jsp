@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Pub Crawler</title>
-<link rel="stylesheet" href="css/Style.css">
+<link rel="stylesheet" href="css/StyleSheet.css">
   </head>
   <body >
   
-    <section class="" id="carousel_bee9">
+    <section class="" id="">
       <h1 class="header1">
         <span class="pubCrawlerTitle">Pub Crawler
         </span>
@@ -87,19 +87,23 @@
   </tr>
 </table>
       </div>
-      <div class="">
+      <div class="InfoBoxDiv">  
+         <TextArea class="InfoBox" rows="10" cols="10" readonly>  Information regarding the pub: 
+        </TextArea>
+        </div>
+        <div>
         <form action="#" method="POST" class="BeerForm">
           <div class="">
             <label for="beerName" class="u-label">Brand:</label>
-            <input type="text" placeholder="Beer name" id="beerName" name="name" class="txtBeerName">
+            <input type="text" placeholder="E.g. Karneöl..." id="beerName" name="name" class="txtBeerName">
           </div>
           <div>
             <label for="beerPrice" class="u-label">Price:</label>
-            <input type="text" placeholder="Price" id="beerPrice" name="price" class="txtPrice">
+            <input type="text" placeholder="E.g. 25 Kr..." id="beerPrice" name="price" class="txtPrice">
           </div>
           <div class="">
             <label for="beerType" class="u-label">Type: </label>
-            <input type="text" placeholder="Type" id="beerType" name="type" class="txtType">
+            <input type="text" placeholder="E.g. Lager..." id="beerType" name="type" class="txtType">
           </div>
           <div>
             <input type="submit" value="Add Beer" id="addBeer" class="btnAddBeer">
@@ -110,17 +114,19 @@
         <form action="#" method="POST" class="PubForm">
           <div class="">
             <label for="pubName">Name:</label>
-            <input type="text" placeholder="Pub name" id="pubName" name="name" class="TxtPubName">
+            <input type="text" placeholder="E.g Barrbaren...." id="pubName" name="name" class="TxtPubName">
           </div>
           <div class="">
-            <label for="pubAddress" class="addressLabel">Address:</label>
-            <input type="text" placeholder="Address" id="pubAddress" name="address" class="TxtPubAddress">
+            <label for="pubAddress" class="addressLabel">Address:
+            </label>
+            <input type="text" placeholder="E.g. Examplestreet 1..." id="pubAddress" name="address" class="TxtPubAddress">
           </div>
           <div class="">
             <input type="submit" value="Add pub" id="addPub" class="btnAddPub">
           </div>
         </form>
       </div>
+      
       <input type="submit" class="btnUpdateSelPub" id="updatePub" value="Update selected pub">
         <br>
       <input type="submit" class="btnUpdateSelBeer" id="updateBeer" value="Update selected beer">
@@ -131,8 +137,6 @@
         <br>
       <input type="submit" class="btnDeleteSelBeer" id="deleteBeer" value="Delete selected Beer">
         <br>
-        <section class="InfoBox"> LOREM IS OKAY
-        </section>
     </section>
     <section class="">
     </section>
