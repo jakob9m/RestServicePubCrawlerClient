@@ -20,6 +20,7 @@ $(document).ready(function() {
 			function ajaxAddReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub added");
+				clearList(document.getElementById("pubList"));
 				getPubs();
 			}
 			function ajaxAddReturnError(result, status, xhr) {
@@ -71,6 +72,7 @@ $(document).ready(function() {
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub updated");
+				clearList(document.getElementById("pubList"));
 				getPubs();
 			}
 			function ajaxUpdateReturnError(result, status, xhr) {
@@ -120,6 +122,7 @@ $(document).ready(function() {
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#pubName").attr("placeholder", "Pub deleted");
+				clearList(document.getElementById("pubList"));
 				getPubs();
 			}
 			function ajaxDelReturnError(result, status, xhr) {
@@ -161,7 +164,6 @@ function getPubs() {
 		success: ajaxFindReturnSuccess
 	})
 	function ajaxFindReturnSuccess(result, status, xhr) {
-		//document.getElementById("pubList").removeChild();
 		var ul = document.getElementById("pubList");
 		result.forEach(function(e) {
 			console.log(e);
@@ -191,4 +193,10 @@ function clearFields() {
 	$("#beerName").val("");
 	$("#beerPrice").val("");
 	$("#beerType").val("");
+}
+
+function clearList(list) {
+	while (list.firstChild) {
+		list.removeChild(list.firstChild)
+	}
 }
