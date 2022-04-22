@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+	
 </script>
 <script src="js/PubCrawlerJs.js"></script>
 <style>
@@ -51,26 +52,29 @@
 			<hr></hr>
 			<p>List of every pub</p>
 			<input type="button" id="showPubs" value="Show all pubs"></input>
-			<h2>
-				The location is Albanska gäris
-			</h2>
 		</div>
 		<div class="column" style="width: 10%">
 			<p>
-				<input type="text" id="pubName" placeholder="Pub name"></input>
+				<input type="text" id="pubName" name="pubName"
+					placeholder="Pub name"></input>
 			</p>
 			<p>
-				<input type="text" id="pubAddress" placeholder="Address"></input>
+				<input type="text" id="pubAddress" name="pubAddress"
+					placeholder="Address"></input>
 			</p>
 			<p>
-				<input type="button" id="addPub" value="<- Add this pub"></input>
+				<input type="button" id="addPub" name="addPub"
+					value="<- Add this pub"></input>
 			</p>
 			<p>
-				<input type="button" id="updatePub" value="Update selected pub"></input>
+				<input type="button" id="updatePub" name="updatePub"
+					value="Update selected pub"></input>
 			</p>
 			<p>
-				<input type="button" id="deletePub" value="Delete selected pub"></input>
+				<input type="button" id="deletePub" name="deletePub"
+					value="Delete selected pub"></input>
 			</p>
+
 		</div>
 		<div class="column" style="width: 40%">
 			<h2>Info about selected pub</h2>
@@ -97,7 +101,8 @@
 				<input type="button" id="deleteBeer" value="Delete selected beer"></input>
 			</p>
 			<p>
-				<input type="button" id="addBeerToPub"value="<- Add beer to selected pub"></input>
+				<input type="button" id="addBeerToPub"
+					value="<- Add beer to selected pub"></input>
 			</p>
 		</div>
 		<div class="column" style="width: 20%">
