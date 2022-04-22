@@ -44,17 +44,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-//	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		PrintWriter out = response.getWriter();
-//		out.println("<!DOCTYPE html>");
-//		out.println("<html>");
-//		out.println("<head><title>PubCrawler</title>");
-//		out.println("<meta charset=\"ISO-8859-1\"></head>");
-//		out.println("<body>");
-//		out.println("<h1>Beer lovers unite!</h1>");
-//		out.println("<h2>" + facade.findPub("Inferno").getLocation() + "</h1>");
-//		out.println("</body></html>");
-//	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -67,28 +56,39 @@ public class PubCrawlerServerlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		BufferedReader reader = request.getReader();
 
-		Pub p = parseJsonPub(reader);
-		try {
-			p = facade.createPub(p);
-		} catch (Exception e) {
-			System.out.println("duplicate key");
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(reader);
+		jsonRoot = jsonReader.readObject();
+		System.out.println("JsonRoot: " + jsonRoot);
+		if (jsonRoot.getString("kind").equals("Pub")) {
+			try {
+				System.out.println("Försöker skapa pub");
+				Pub pub = new Pub();
+				pub.setpubName(jsonRoot.getString("pubName"));
+				pub.setLocation(jsonRoot.getString("location"));
+				pub.setVibe("Cozy");
+				pub = facade.createPub(pub);
+				sendAsJson(response, pub);
+				doGet(request, response);
+			} catch (Exception e) {
+				System.out.println("Duplicate key");
+			}
+		} else {
+			try {
+				Beer beer = new Beer();
+				beer.setBeer(jsonRoot.getString("beerName"));
+				beer.setPrice(Integer.parseInt(jsonRoot.getString("beerPrice")));
+				beer.setType(jsonRoot.getString("beerType"));
+				beer = facade.createBeer(beer);
+				sendAsJson(response, beer);
+				doGet(request, response);
+			} catch (Exception e) {
+				System.out.println("Duplicate key");
+			}
 		}
-		sendAsJson(response, p);
-		doGet(request, response);
-		
-//			Beer b = parseJsonBeer(reader);
-//			try {
-//				b = facade.createBeer(b);
-//			} catch (Exception e) {
-//				System.out.println("duplicate key");
-//			}
-//			sendAsJson(response, b);
-//			doGet(request, response);
-//		}
-
 	}
 
 	/**
@@ -101,34 +101,32 @@ public class PubCrawlerServerlet extends HttpServlet {
 		JsonObject jsonRoot = null;
 		jsonReader = Json.createReader(reader);
 		jsonRoot = jsonReader.readObject();
+		System.out.println("JsonRoot: " + jsonRoot);
 
-		if (jsonRoot.getString("iAm").equals("Pub")) {
-			Pub p = facade.findPub(jsonRoot.getString("PubName"));
+		if (jsonRoot.getString("kind").equals("Pub")) {
+			Pub p = facade.findPub(jsonRoot.getString("pubName"));
 			try {
+				p.setLocation(jsonRoot.getString("location"));
 				p = facade.updatePub(p);
+				sendAsJson(response, p);
+				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
 
-		} else if (jsonRoot.getString("iAm").equals("Beer")) {
+		} else if (jsonRoot.getString("kind").equals("Beer")) {
 			Beer b = facade.findBeer(jsonRoot.getString("beerName"));
 			try {
+				int price = Integer.parseInt(jsonRoot.getString("beerPrice"));
+				b.setPrice(price);
+				b.setType(jsonRoot.getString("beerType"));
 				b = facade.updateBeer(b);
+				sendAsJson(response, b);
+				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
 		}
-//		Pub p = parseJsonPub(reader);
-//		// Uppdatera i db
-		// sendAsJson(response, p);
-//		Beer b = parseJsonBeer(reader);
-//		// Uppdatera i db
-//		try {
-//			b = facade.updateBeer(b);
-//		} catch (Exception ex) {
-//			System.out.println("facade Update Error");
-//		}
-//		sendAsJson(response, b);
 	}
 
 	/**
@@ -137,9 +135,23 @@ public class PubCrawlerServerlet extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BufferedReader reader = request.getReader();
-		String toBeDeleted = parseJsonString(reader); // Den här tar nu bort både pub och beer oavsett - suboptimalt
-		facade.deletePub(toBeDeleted);
-		facade.deleteBeer(toBeDeleted);
+		JsonReader jsonReader = null;
+		JsonObject jsonRoot = null;
+		jsonReader = Json.createReader(reader);
+		jsonRoot = jsonReader.readObject();
+		if (jsonRoot.getString("kind").equals("Pub")) {
+			try {
+				facade.deletePub(jsonRoot.getString("pubName"));
+			} catch (Exception e) {
+				System.out.println("Deletion failed");
+			}
+		} else if (jsonRoot.getString("kind").equals("Beer")) {
+			try {
+				facade.deleteBeer(jsonRoot.getString("beerName"));
+			} catch (Exception e) {
+				System.out.println("Deletion failed");
+			}
+		}
 	}
 
 	private void sendAsJson(HttpServletResponse response, Pub pub) throws IOException {
@@ -198,48 +210,33 @@ public class PubCrawlerServerlet extends HttpServlet {
 //		out.flush();
 //	}
 
-	private String parseJsonString(BufferedReader br) { // Integrera den här i doDelete istället?
-		JsonReader jsonReader = null;
-		JsonObject jsonRoot = null;
-		jsonReader = Json.createReader(br);
-		jsonRoot = jsonReader.readObject();
-		if (jsonRoot.getString("iAm").equals("Beer")) {
-			String beerName = jsonRoot.getString("beerName");
-			return beerName;
-		} else if (jsonRoot.getString("iAm").equals("Pub")) {
-			String pubName = jsonRoot.getString("pubName");
-			return pubName;
-		} else {
-			return "";
-		}
-	}
 
-	private Pub parseJsonPub(BufferedReader br) {
-		// javax.json-1.0.4.jar
-		JsonReader jsonReader = null;
-		JsonObject jsonRoot = null;
-		jsonReader = Json.createReader(br);
-		jsonRoot = jsonReader.readObject();
-		System.out.println("JsonRoot: " + jsonRoot);
-		Pub pub = new Pub();
-		pub.setpubName(jsonRoot.getString("pubName"));
-		pub.setLocation(jsonRoot.getString("location"));
-		pub.setVibe("Cozy");
-		return pub;
-	}
-
-	private Beer parseJsonBeer(BufferedReader br) {
-		// javax.json-1.0.4.jar
-		JsonReader jsonReader = null;
-		JsonObject jsonRoot = null;
-		jsonReader = Json.createReader(br);
-		jsonRoot = jsonReader.readObject();
-		System.out.println("JsonRoot: " + jsonRoot);
-		Beer beer = new Beer();
-		beer.setBeer(jsonRoot.getString("beerName"));
-		beer.setPrice(jsonRoot.getInt("price".toString()));
-		beer.setType(jsonRoot.getString("type"));
-		return beer;
-	}
+//	private Pub parseJsonPub(BufferedReader br) {
+//		// javax.json-1.0.4.jar
+//		JsonReader jsonReader = null;
+//		JsonObject jsonRoot = null;
+//		jsonReader = Json.createReader(br);
+//		jsonRoot = jsonReader.readObject();
+//		System.out.println("JsonRoot: " + jsonRoot);
+//		Pub pub = new Pub();
+//		pub.setpubName(jsonRoot.getString("pubName"));
+//		pub.setLocation(jsonRoot.getString("location"));
+//		pub.setVibe("Cozy");
+//		return pub;
+//	}
+//
+//	private Beer parseJsonBeer(BufferedReader br) {
+//		// javax.json-1.0.4.jar
+//		JsonReader jsonReader = null;
+//		JsonObject jsonRoot = null;
+//		jsonReader = Json.createReader(br);
+//		jsonRoot = jsonReader.readObject();
+//		System.out.println("JsonRoot: " + jsonRoot);
+//		Beer beer = new Beer();
+//		beer.setBeer(jsonRoot.getString("beerName"));
+//		beer.setPrice(jsonRoot.getInt("price".toString()));
+//		beer.setType(jsonRoot.getString("type"));
+//		return beer;
+//	}
 
 }

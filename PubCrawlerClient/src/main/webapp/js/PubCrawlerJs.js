@@ -18,7 +18,7 @@ $(document).ready(function() {
 		var pubName = $("#pubName").val();
 		var pubAddress = $("#pubAddress").val();
 		var vibe = "Cozy";
-		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, iAm: "Pub"};
+		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, beerName: null, beerPrice: null, beerType: null, kind: "Pub"};
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "" && pubAddress != "") {
 			$.ajax({
@@ -43,7 +43,7 @@ $(document).ready(function() {
 		var beerName = $("#beerName").val();
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, iAm: "Beer"};
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer"};
 		var jsonString = JSON.stringify(obj);
 		if (beerName  != "" && beerPrice != "" && beerType != ""){
 			$.ajax({
@@ -68,7 +68,7 @@ $(document).ready(function() {
 		var pubName = $("#pubName").val();
 		var pubAddress = $("#pubAddress").val();
 		var vibe = "Cozy";
-		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, iAm: "Pub"};
+		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, beerName: null, beerPrice: null, beerType: null, kind: "Pub"};
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "" && pubAddress != "") {
 			$.ajax({
@@ -93,7 +93,7 @@ $(document).ready(function() {
 		var beerName = $("#beerName").val();
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, iAm: "Beer"};
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer"};
 		var jsonString = JSON.stringify(obj);
 		if (beerName  != "" && beerPrice != "" && beerType != ""){
 			$.ajax({
@@ -117,7 +117,7 @@ $(document).ready(function() {
 
 	$("#deletePub").click(function() {
 		var pubName = $("#pubName").val();
-		var obj = {pubName: pubName, iAm: "Pub"};
+		var obj = { pubName: pubName, location: pubAddress, vibeName: vibe, beerName: null, beerPrice: null, beerType: null, kind: "Pub"};
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "") {
 			$.ajax({
@@ -139,7 +139,7 @@ $(document).ready(function() {
 	})//btnclick
 	$("#deleteBeer").click(function() {
 		var beerName = $("#beerName").val();
-		var obj = {beerName: beerName, iAm: "Beer"};
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer"};
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "") {
 			$.ajax({
