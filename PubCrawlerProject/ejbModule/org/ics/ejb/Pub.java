@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @NamedQueries( {
 @NamedQuery (
-		name = "Pubs.findAll", 
+		name = "Pub.findAll", 
 		query = "SELECT p FROM Pub p")
 })
 
