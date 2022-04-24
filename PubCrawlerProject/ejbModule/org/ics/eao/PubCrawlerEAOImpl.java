@@ -70,7 +70,6 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 	public ArrayList<Pub>getAllPubs() {
 		TypedQuery<Pub> tq = em.createNamedQuery("Pub.findAll", Pub.class);
 		ArrayList<Pub> pubs = (ArrayList<Pub>) tq.getResultList();
-		System.out.println(pubs);
 		return pubs;
 		}
 	

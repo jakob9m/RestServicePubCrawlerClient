@@ -41,6 +41,22 @@
 	padding: 2px;
 	background-color: #cecfc8;
 }
+
+button {
+	background: #ededed;
+	border: 1px solid #ccc;
+	padding: 10px 30px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+button:active, .active {
+	background: #e5e5e5;
+	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+	box-shadow: inset 0px 0px 5px #c1c1c1;
+	outline: none;
+}
 </style>
 </head>
 <body>
@@ -51,7 +67,7 @@
 			<h2>Pubs</h2>
 			<hr></hr>
 			<div class=cointainer>
-				<ul id="pubList" name="pubList"></ul>
+				<ul id="pubList"></ul>
 			</div>
 
 		</div>
@@ -79,9 +95,11 @@
 
 		</div>
 		<div class="column" style="width: 40%">
-			<h2>Info about selected pub</h2>
+			<h2 id="pubInfo"></h2>
 			<hr></hr>
 			<p>Address, beers with prices and types</p>
+			<button id="testButton" class="testButton" name="testButton"
+				onclick="buttonClick()">Button</button>
 		</div>
 		<div class="column" style="width: 10%">
 			<p>
@@ -110,7 +128,7 @@
 		<div class="column" style="width: 20%">
 			<h2>Beers</h2>
 			<hr></hr>
-			<p>List of every available beer</p>
+			<ul id="beerList"></ul>
 		</div>
 	</div>
 </body>

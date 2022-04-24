@@ -1,7 +1,9 @@
 $(document).ready(function() {
 	window.onload = function() {
 		getPubs();
+		getBeers();
 	};
+	buttonClick("Info about selected pub");
 
 	$("#addPub").click(function() {
 		var pubName = $("#pubName").val();
@@ -48,6 +50,8 @@ $(document).ready(function() {
 			function ajaxAddReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#beerName").attr("placeholder", "Beer added");
+				clearList(document.getElementById("beerList"));
+				getBeers();
 			}
 			function ajaxAddReturnError(result, status, xhr) {
 				alert("Error Add");
@@ -99,6 +103,8 @@ $(document).ready(function() {
 			function ajaxUpdateReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#beerName").attr("placeholder", "Beer updated");
+				clearList(document.getElementById("beerList"));
+				getBeers();
 			}
 			function ajaxUpdateReturnError(result, status, xhr) {
 				alert("Error Update");
@@ -146,6 +152,8 @@ $(document).ready(function() {
 			function ajaxDelReturnSuccess(result, status, xhr) {
 				clearFields();
 				$("#beerName").attr("placeholder", "Beer deleted");
+				clearList(document.getElementById("beerList"));
+				getBeers();
 			}
 			function ajaxDelReturnError(result, status, xhr) {
 				alert("Error");
@@ -157,8 +165,11 @@ $(document).ready(function() {
 });//End ready function
 
 function getPubs() {
+	var obj = { kind: "Pubs" };
+	var jsonString = JSON.stringify(obj);
 	$.ajax({
-		method: "GET",
+		method: "POST",
+		data: jsonString,
 		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
 		error: ajaxFindReturnError,
 		success: ajaxFindReturnSuccess
@@ -166,15 +177,45 @@ function getPubs() {
 	function ajaxFindReturnSuccess(result, status, xhr) {
 		var ul = document.getElementById("pubList");
 		result.forEach(function(e) {
-			console.log(e);
-			var li = document.createElement("li")
-			li.innerText = e.pubName;
-			ul.append(li);
+			var button = document.createElement("button")
+			button.setAttribute("name", e.pubName);
+			button.setAttribute("onclick", "buttonClick(this.name)");
+			var br = document.createElement("br")
+			button.innerText = e.pubName;
+			ul.append(button);
+			ul.append(br);
 		})
 	}
 	function ajaxFindReturnError(result, status, xhr) {
 		alert("Error");
 		console.log("Ajax-find pubs: " + status);
+	}
+}
+
+function getBeers() {
+	var obj = { kind: "Beers" };
+	var jsonString = JSON.stringify(obj);
+	$.ajax({
+		method: "POST",
+		data: jsonString,
+		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
+		error: ajaxFindReturnError,
+		success: ajaxFindReturnSuccess
+	})
+	function ajaxFindReturnSuccess(result, status, xhr) {
+		var ul = document.getElementById("beerList");
+		result.forEach(function(e) {
+			var button = document.createElement("button")
+			button.setAttribute("name", e.beerName);
+			var br = document.createElement("br")
+			button.innerText = e.beerName;
+			ul.append(button);
+			ul.append(br);
+		})
+	}
+	function ajaxFindReturnError(result, status, xhr) {
+		alert("Error");
+		console.log("Ajax-find beers: " + status);
 	}
 }
 
@@ -199,4 +240,9 @@ function clearList(list) {
 	while (list.firstChild) {
 		list.removeChild(list.firstChild)
 	}
+}
+
+function buttonClick(String) {
+	var pubInf = document.getElementById("pubInfo");
+	pubInf.innerText = String;
 }
