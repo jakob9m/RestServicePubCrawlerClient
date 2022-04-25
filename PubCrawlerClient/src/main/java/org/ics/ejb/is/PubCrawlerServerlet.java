@@ -111,12 +111,19 @@ public class PubCrawlerServerlet extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println("Något är wack med getAllPubs");
 			}
-		} else {
+		} else if (jsonRoot.getString("kind").equals("Beers")) {
 			try {
 				ArrayList<Beer> allBeers = facade.getAllBeers();
 				sendAsJsonBeer(response, allBeers);
 			} catch (Exception e) {
 				System.out.println("Något är wack med getAllBeers");
+			}
+		} else {
+			try {
+				Pub pub = facade.findPub(jsonRoot.getString("pubName"));
+				sendAsJson(response, pub);
+			} catch (Exception e) {
+				System.out.println("findPub funkar ej");
 			}
 		}
 	}

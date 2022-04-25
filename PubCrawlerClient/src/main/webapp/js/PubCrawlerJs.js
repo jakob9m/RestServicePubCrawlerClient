@@ -6,6 +6,7 @@ $(document).ready(function() {
 		console.log(document.getElementById("pubAddressHeader"));
 		//button.addEventListener('click',clicked);
 		console.log(button);
+		var address = "address";
 	};
 	buttonClick("Info about selected pub");
 
@@ -225,6 +226,25 @@ function getBeers() {
 	}
 }
 
+function getPubInfo(name) {
+	var obj = { kind: "PubInfo", pubName: name };
+	var jsonString = JSON.stringify(obj);
+	$.ajax({
+		method: "POST",
+		data: jsonString,
+		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
+		error: ajaxFindReturnError,
+		success: ajaxFindReturnSuccess
+	})
+	function ajaxFindReturnSuccess(result, status, xhr) {
+		address = result.address;
+	}
+	function ajaxFindReturnError(result, status, xhr) {
+		alert("Error");
+		console.log("Ajax-find beers: " + status);
+	}
+}
+
 function ParseJsonFilePub(result) {
 	$("#pubName").val(result.pubName);
 	$("#pubAddress").val(result.pubAddress);
@@ -251,9 +271,9 @@ function clearList(list) {
 function buttonClick(String) {
 	var pubInf = document.getElementById("pubInfo");
 	var pubAddress = document.getElementById("pubAddressHeader");
-	console.log(pubAddress);
 	pubInf.innerText = String;
-	pubAddress.innerText = "<Address of pub>";
+	getPubInfo(String);
+	pubAddress.innerText = address;
 }
 
 function clicked() {
