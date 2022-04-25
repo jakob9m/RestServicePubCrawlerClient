@@ -2,13 +2,10 @@ $(document).ready(function() {
 	window.onload = function() {
 		getPubs();
 		getBeers();
-		const button = document.getElementsByClassName(".button");
+		document.getElementById("pubInfo").innerText = "Info about selected pub";
 		document.getElementById("pubAddressHeader").innerText = "Address";
-		console.log(document.getElementById("pubAddressHeader"));
-		//button.addEventListener('click',clicked);
-		console.log(button);
 	};
-	buttonClick("Info about selected pub");
+	//buttonClick("Info about selected pub");
 
 	$("#addPub").click(function() {
 		var pubName = $("#pubName").val();
@@ -237,7 +234,8 @@ function getPubInfo(name) {
 		success: ajaxFindReturnSuccess
 	})
 	function ajaxFindReturnSuccess(result, status, xhr) {
-		address = result.address;
+		var pubAddress = document.getElementById("pubAddressHeader");
+		pubAddress.innerText = result.address;
 		getBeersByPub(name)
 	}
 	function ajaxFindReturnError(result, status, xhr) {
@@ -296,10 +294,10 @@ function clearList(list) {
 
 function buttonClick(String) {
 	var pubInf = document.getElementById("pubInfo");
-	var pubAddress = document.getElementById("pubAddressHeader");
+	//var pubAddress = document.getElementById("pubAddressHeader");
 	pubInf.innerText = String;
 	getPubInfo(String);
-	pubAddress.innerText = address;
+	//pubAddress.innerText = address;
 }
 
 function clicked() {
