@@ -6,12 +6,11 @@ $(document).ready(function() {
 		document.getElementById("pubAddressHeader").innerText = "Address";
 		document.getElementById("selectedBeer").innerText = "";
 	};
-	//buttonClick("Info about selected pub");
 
 	$("#addPub").click(function() {
 		var pubName = $("#pubName").val();
 		var pubAddress = $("#pubAddress").val();
-		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", beerName: null, beerPrice: null, beerType: null, kind: "Pub" };
+		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", kind: "Pub" };
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "" && pubAddress != "") {
 			$.ajax({
@@ -39,7 +38,7 @@ $(document).ready(function() {
 		var beerName = $("#beerName").val();
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer" };
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "" && beerPrice != "" && beerType != "") {
 			$.ajax({
@@ -60,12 +59,14 @@ $(document).ready(function() {
 				alert("Error Add");
 				console.log("Ajax: " + status);
 			}
+		}else{
+			$("#beerName").attr("placeholder", "Fill out each field!");
 		}
 	})//addbtnclick
 	$("#updatePub").click(function() {
-		var pubName = $("#pubName").val();
+		var pubName = document.getElementById("pubInfo").innerText;
 		var pubAddress = $("#pubAddress").val();
-		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", beerName: null, beerPrice: null, beerType: null, kind: "Pub" };
+		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", kind: "Pub" };
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "" && pubAddress != "") {
 			$.ajax({
@@ -83,16 +84,18 @@ $(document).ready(function() {
 				getPubs();
 			}
 			function ajaxUpdateReturnError(result, status, xhr) {
-				alert("Error Update");
+				$("#pubName").attr("placeholder", "Could not update");
 				console.log("Ajax-find: " + status);
 			}
+		}else{
+			$("#pubAddress").attr("placeholder", "Type the new address here");
 		}
 	})//uppdatebtnclick
 	$("#updateBeer").click(function() {
-		var beerName = $("#beerName").val();
+		var beerName = document.getElementById("selectedBeer").innerText;
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer" };
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "" && beerPrice != "" && beerType != "") {
 			$.ajax({
@@ -110,15 +113,17 @@ $(document).ready(function() {
 				getBeers();
 			}
 			function ajaxUpdateReturnError(result, status, xhr) {
-				alert("Error Update");
+				$("#beerName").attr("placeholder", "Could not update");
 				console.log("Ajax-find: " + status);
 			}
+		}else{
+			$("#beerName").attr("placeholder", "Fill out each field!");
 		}
 	})//uppdatebtnclick
 
 	$("#deletePub").click(function() {
-		var pubName = $("#pubName").val();
-		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", beerName: null, beerPrice: null, beerType: null, kind: "Pub" };
+		var pubName = document.getElementById("pubInfo").innerText;
+		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", kind: "Pub" };
 		var jsonString = JSON.stringify(obj);
 		if (pubName != "") {
 			$.ajax({
@@ -141,8 +146,8 @@ $(document).ready(function() {
 		}
 	})//btnclick
 	$("#deleteBeer").click(function() {
-		var beerName = $("#beerName").val();
-		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, pubName: null, location: null, vibeName: null, kind: "Beer" };
+		var beerName = document.getElementById("selectedBeer").innerText;
+		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "") {
 			$.ajax({
@@ -292,19 +297,6 @@ function getBeersByPub(name) {
 	}
 }
 
-function ParseJsonFilePub(result) {
-	$("#pubName").val(result.pubName);
-	$("#pubAddress").val(result.pubAddress);
-}
-function ParseJsonFileServes(result) {
-	$("#pubName").val(result.pubName);
-	$("#pubAddress").val(result.pubAddress);
-}
-function ParseJsonFileBeer(result) {
-	$("#beerName").val(result.beerName);
-	$("#beerPrice").val(result.beerPrice);
-	$("#beerType").val(result.beerType);
-}
 function clearFields() {
 	$("#pubName").val("");
 	$("#pubAddress").val("");
