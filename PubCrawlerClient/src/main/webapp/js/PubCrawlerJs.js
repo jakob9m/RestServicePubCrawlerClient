@@ -4,6 +4,7 @@ $(document).ready(function() {
 		getBeers();
 		document.getElementById("pubInfo").innerText = "Info about selected pub";
 		document.getElementById("pubAddressHeader").innerText = "Address";
+		document.getElementById("selectedBeer").innerText = "";
 	};
 	//buttonClick("Info about selected pub");
 
@@ -164,6 +165,27 @@ $(document).ready(function() {
 		}
 	})//btnclick
 
+	$("#addBeerToPub").click(function() {
+		pubName = document.getElementById("pubInfo").innerText;
+		beerName = document.getElementById("selectedBeer").innerText;
+		var obj = { kind: "beerToPub", pubName: pubName, beerName: beerName };
+		var jsonString = JSON.stringify(obj);
+		$.ajax({
+			method: "POST",
+			data: jsonString,
+			url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
+			error: ajaxFindReturnError,
+			success: ajaxFindReturnSuccess
+		})
+		function ajaxFindReturnSuccess(result, status, xhr) {
+			getBeersByPub(pubName);
+		}
+		function ajaxFindReturnError(result, status, xhr) {
+			console.log(result);
+			console.log(status);
+			console.log("Ajax-find beers: " + status);
+		}
+	})
 });//End ready function
 
 function getPubs() {
@@ -211,6 +233,7 @@ function getBeers() {
 			var button = document.createElement("button");
 			button.setAttribute("class", "beerButton");
 			button.setAttribute("name", e.beerName);
+			button.setAttribute("onclick", "beerButtonClicked(this.name)");
 			var br = document.createElement("br");
 			button.innerText = e.beerName;
 			ul.append(button);
@@ -273,6 +296,10 @@ function ParseJsonFilePub(result) {
 	$("#pubName").val(result.pubName);
 	$("#pubAddress").val(result.pubAddress);
 }
+function ParseJsonFileServes(result) {
+	$("#pubName").val(result.pubName);
+	$("#pubAddress").val(result.pubAddress);
+}
 function ParseJsonFileBeer(result) {
 	$("#beerName").val(result.beerName);
 	$("#beerPrice").val(result.beerPrice);
@@ -294,10 +321,14 @@ function clearList(list) {
 
 function buttonClick(String) {
 	var pubInf = document.getElementById("pubInfo");
-	//var pubAddress = document.getElementById("pubAddressHeader");
 	pubInf.innerText = String;
 	getPubInfo(String);
-	//pubAddress.innerText = address;
+}
+
+function beerButtonClicked(String){
+	var selectedBeer = document.getElementById("selectedBeer");
+	selectedBeer.innerText = String;
+	console.log(selectedBeer.innerText);
 }
 
 function clicked() {

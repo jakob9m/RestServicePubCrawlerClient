@@ -145,6 +145,7 @@
 		</div>
 		<div class="column" style="width: 20%">
 			<h2>Beers</h2>
+			<p id="selectedBeer"></p>
 			<hr></hr>
 			<ul id="beerList"></ul>
 		</div>
