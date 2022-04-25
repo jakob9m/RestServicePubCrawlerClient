@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import org.ics.ejb.Beer;
 import org.ics.ejb.Pub;
+import org.ics.ejb.Serves;
 
 /**
  * Session Bean implementation class PubCrawlerEAOImpl
@@ -78,5 +79,11 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 		ArrayList<Beer> beers = (ArrayList<Beer>) tq.getResultList();
 		return beers;
 		}
-
+	
+	public ArrayList<Serves>getBeersByPub(String pubName){
+		TypedQuery<Serves> tq = em.createNamedQuery("Serves.findBeers", Serves.class);
+		tq.setParameter("pubName", pubName);
+		ArrayList<Serves> beersPerPub = (ArrayList<Serves>) tq.getResultList();
+		return beersPerPub;
+	}
 }

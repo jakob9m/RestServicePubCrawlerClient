@@ -238,6 +238,32 @@ function getPubInfo(name) {
 	})
 	function ajaxFindReturnSuccess(result, status, xhr) {
 		address = result.address;
+		getBeersByPub(name)
+	}
+	function ajaxFindReturnError(result, status, xhr) {
+		alert("Error");
+		console.log("Ajax-find beers: " + status);
+	}
+}
+
+function getBeersByPub(name) {
+	var obj = { kind: "beersBypub", pubName: name };
+	var jsonString = JSON.stringify(obj);
+	$.ajax({
+		method: "POST",
+		data: jsonString,
+		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
+		error: ajaxFindReturnError,
+		success: ajaxFindReturnSuccess
+	})
+	function ajaxFindReturnSuccess(result, status, xhr) {
+		clearList(document.getElementById("servesList"));
+		var ul = document.getElementById("servesList");
+		result.forEach(function(e) {
+			var li = document.createElement("li");
+			li.innerText = e.beerName;
+			ul.append(li);
+		})
 	}
 	function ajaxFindReturnError(result, status, xhr) {
 		alert("Error");
