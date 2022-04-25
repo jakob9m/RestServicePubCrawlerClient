@@ -3,10 +3,10 @@ $(document).ready(function() {
 		getPubs();
 		getBeers();
 		const button = document.getElementsByClassName(".button");
+		document.getElementById("pubAddressHeader").innerText = "Address";
 		console.log(document.getElementById("pubAddressHeader"));
 		//button.addEventListener('click',clicked);
 		console.log(button);
-		var address = "address";
 	};
 	buttonClick("Info about selected pub");
 
@@ -277,5 +277,5 @@ function buttonClick(String) {
 }
 
 function clicked() {
-  button.classList.toggle('active');
+	button.classList.toggle('active');
 }

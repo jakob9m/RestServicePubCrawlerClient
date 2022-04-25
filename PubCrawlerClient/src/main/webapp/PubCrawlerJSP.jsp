@@ -114,11 +114,10 @@
 		</div>
 		<div class="column" style="width: 40%">
 			<h2 id="pubInfo"></h2>
-			<h3 id="pubAddressHeader">BRUH</h3>
+			<h3 id="pubAddressHeader">Address</h3>
 			<hr></hr>
-			<p>Address, beers with prices and types</p>
-			<button id="testButton" class="testButton" name="testButton"
-				onclick="buttonClick()">Button</button>
+			<p>This pub serves: </p>
+			<ul id="servesList"></ul>
 		</div>
 		<div class="column" style="width: 10%">
 			<p>
