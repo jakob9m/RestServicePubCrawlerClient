@@ -23,9 +23,6 @@ import org.ics.ejb.Pub;
 import org.ics.ejb.Serves;
 import org.ics.facade.FacadeLocal;
 
-/**
- * Servlet implementation class PubCrawlerServerlet
- */
 @WebServlet("/PubCrawlerServerlet")
 public class PubCrawlerServerlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,56 +30,23 @@ public class PubCrawlerServerlet extends HttpServlet {
 	@EJB
 	FacadeLocal facade;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public PubCrawlerServerlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BufferedReader reader = request.getReader();
 
-		JsonReader jsonReader = null;
-		JsonObject jsonRoot = null;
-		jsonReader = Json.createReader(reader);
-		jsonRoot = jsonReader.readObject();
-		if (jsonRoot.getString("kind").equals("Pub")) {
-			try {
-				ArrayList<Pub> allPubs = facade.getAllPubs();
-				sendAsJson(response, allPubs);
-			} catch (Exception e) {
-				System.out.println("Något är wack med getAllPubs");
-			}
-		} else {
-			try {
-				ArrayList<Beer> allBeers = facade.getAllBeers();
-				sendAsJsonBeer(response, allBeers);
-			} catch (Exception e) {
-				System.out.println("Något är wack med getAllBeers");
-			}
-		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BufferedReader reader = request.getReader();
-
 		JsonReader jsonReader = null;
 		JsonObject jsonRoot = null;
 		jsonReader = Json.createReader(reader);
 		jsonRoot = jsonReader.readObject();
+		
 		if (jsonRoot.getString("kind").equals("Pub")) {
 			try {
 				Pub pub = new Pub();
@@ -146,9 +110,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
-	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BufferedReader reader = request.getReader();
@@ -181,9 +142,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
-	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		BufferedReader reader = request.getReader();
@@ -315,56 +273,5 @@ public class PubCrawlerServerlet extends HttpServlet {
 		}
 		out.flush();
 	}
-	
-//	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
-//		PrintWriter out = response.getWriter();
-//		response.setContentType("application/json");
-//		if (pubs != null) {
-//			JsonArrayBuilder array = Json.createArrayBuilder();
-//			for (Pub p : pubs) {
-//				if (p != null) {
-//					JsonObjectBuilder o = Json.createObjectBuilder();
-//					o.add("pubName", String.valueOf(p.getpubName()));
-//					o.add("location", p.getLocation());
-//					o.add("vibeName", "Cozy");
-//					array.add(o);
-//				}
-//			}
-//			JsonArray jsonArray = array.build();
-//			System.out.println(jsonArray);
-//			out.print(jsonArray);
-//		} else {
-//			out.print("[]");
-//		}
-//		out.flush();
-//	}
-
-//	private Pub parseJsonPub(BufferedReader br) {
-//		// javax.json-1.0.4.jar
-//		JsonReader jsonReader = null;
-//		JsonObject jsonRoot = null;
-//		jsonReader = Json.createReader(br);
-//		jsonRoot = jsonReader.readObject();
-//		System.out.println("JsonRoot: " + jsonRoot);
-//		Pub pub = new Pub();
-//		pub.setpubName(jsonRoot.getString("pubName"));
-//		pub.setLocation(jsonRoot.getString("location"));
-//		pub.setVibe("Cozy");
-//		return pub;
-//	}
-//
-//	private Beer parseJsonBeer(BufferedReader br) {
-//		// javax.json-1.0.4.jar
-//		JsonReader jsonReader = null;
-//		JsonObject jsonRoot = null;
-//		jsonReader = Json.createReader(br);
-//		jsonRoot = jsonReader.readObject();
-//		System.out.println("JsonRoot: " + jsonRoot);
-//		Beer beer = new Beer();
-//		beer.setBeer(jsonRoot.getString("beerName"));
-//		beer.setPrice(jsonRoot.getInt("price".toString()));
-//		beer.setType(jsonRoot.getString("type"));
-//		return beer;
-//	}
 
 }
