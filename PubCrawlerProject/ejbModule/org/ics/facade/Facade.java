@@ -70,6 +70,9 @@ public class Facade implements FacadeLocal {
 	public ArrayList<Serves>getBeersByPub(String pubName){
 		return PubCrawlerEAO.getBeersByPub(pubName);
 	}
-
+	
+	public Serves createServes(Serves serves) {
+		return PubCrawlerEAO.createServes(serves);
+	}
 
 }

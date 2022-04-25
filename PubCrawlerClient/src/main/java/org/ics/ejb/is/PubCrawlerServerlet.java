@@ -126,6 +126,16 @@ public class PubCrawlerServerlet extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println("Något är wack med getBeersByPub");
 			}
+		} else if (jsonRoot.getString("kind").equals("beerToPub")) {
+			try {
+				Serves serves = new Serves();
+				serves.setpubName(jsonRoot.getString("pubName"));
+				serves.setBeerName(jsonRoot.getString("beerName"));
+				serves = facade.createServes(serves);
+				sendAsJsonServes(response, serves);
+			} catch (Exception e) {
+				System.out.println("Något är wack med createServes");
+			}
 		} else {
 			try {
 				Pub pub = facade.findPub(jsonRoot.getString("pubName"));
@@ -153,7 +163,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 				p.setLocation(jsonRoot.getString("location"));
 				p = facade.updatePub(p);
 				sendAsJson(response, p);
-//				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
@@ -166,7 +175,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 				b.setType(jsonRoot.getString("beerType"));
 				b = facade.updateBeer(b);
 				sendAsJson(response, b);
-//				doGet(request, response);
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
@@ -230,6 +238,20 @@ public class PubCrawlerServerlet extends HttpServlet {
 		out.flush();
 	}
 
+	private void sendAsJsonServes(HttpServletResponse response, Serves serves) throws IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		if (serves != null) {
+			out.print("{\"pubName\":");
+			out.print("\"" + serves.getpubName() + "\"");
+			out.print(",\"beerName\":");
+			out.print("\"" + serves.getBeerName() + "\"}");
+		} else {
+			out.print("{ }");
+		}
+		out.flush();
+	}
+	
 	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");

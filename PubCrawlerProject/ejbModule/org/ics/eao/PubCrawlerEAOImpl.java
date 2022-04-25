@@ -86,4 +86,10 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 		ArrayList<Serves> beersPerPub = (ArrayList<Serves>) tq.getResultList();
 		return beersPerPub;
 	}
+	
+	public Serves createServes(Serves serves) {
+		em.persist(serves);
+		return serves;
+	}
+	
 }

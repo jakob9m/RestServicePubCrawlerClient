@@ -21,4 +21,5 @@ public interface FacadeLocal {
 	public Pub updatePub(Pub pub);
 	public void deletePub(String pubName);
 	public ArrayList<Serves>getBeersByPub(String pubName);
+	public Serves createServes(Serves serves);
 }
