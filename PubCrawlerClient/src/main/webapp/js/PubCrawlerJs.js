@@ -2,6 +2,10 @@ $(document).ready(function() {
 	window.onload = function() {
 		getPubs();
 		getBeers();
+		const button = document.getElementsByClassName(".button");
+		console.log(document.getElementById("pubAddressHeader"));
+		//button.addEventListener('click',clicked);
+		console.log(button);
 	};
 	buttonClick("Info about selected pub");
 
@@ -178,6 +182,7 @@ function getPubs() {
 		var ul = document.getElementById("pubList");
 		result.forEach(function(e) {
 			var button = document.createElement("button")
+			button.setAttribute("class", "pubButton");
 			button.setAttribute("name", e.pubName);
 			button.setAttribute("onclick", "buttonClick(this.name)");
 			var br = document.createElement("br")
@@ -205,9 +210,10 @@ function getBeers() {
 	function ajaxFindReturnSuccess(result, status, xhr) {
 		var ul = document.getElementById("beerList");
 		result.forEach(function(e) {
-			var button = document.createElement("button")
+			var button = document.createElement("button");
+			button.setAttribute("class", "beerButton");
 			button.setAttribute("name", e.beerName);
-			var br = document.createElement("br")
+			var br = document.createElement("br");
 			button.innerText = e.beerName;
 			ul.append(button);
 			ul.append(br);
@@ -244,5 +250,12 @@ function clearList(list) {
 
 function buttonClick(String) {
 	var pubInf = document.getElementById("pubInfo");
+	var pubAddress = document.getElementById("pubAddressHeader");
+	console.log(pubAddress);
 	pubInf.innerText = String;
+	pubAddress.innerText = "<Address of pub>";
+}
+
+function clicked() {
+  button.classList.toggle('active');
 }

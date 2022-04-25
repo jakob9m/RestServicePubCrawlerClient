@@ -42,7 +42,7 @@
 	background-color: #cecfc8;
 }
 
-button {
+.pubButton {
 	background: #ededed;
 	border: 1px solid #ccc;
 	padding: 10px 30px;
@@ -50,7 +50,25 @@ button {
 	cursor: pointer;
 }
 
-button:active, .active {
+.pubButton:active,
+.active {
+	background: #e5e5e5;
+	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+	box-shadow: inset 0px 0px 5px #c1c1c1;
+	outline: none;
+}
+
+.beerButton {
+	background: #ededed;
+	border: 1px solid #ccc;
+	padding: 10px 30px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.beerButton:active,
+.active {
 	background: #e5e5e5;
 	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
 	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
@@ -61,7 +79,7 @@ button:active, .active {
 </head>
 <body>
 
-	<h2>PubCrawler</h2>
+	<h1>PubCrawler</h1>
 	<div class="row">
 		<div class="column" style="width: 20%;">
 			<h2>Pubs</h2>
@@ -96,6 +114,7 @@ button:active, .active {
 		</div>
 		<div class="column" style="width: 40%">
 			<h2 id="pubInfo"></h2>
+			<h3 id="pubAddressHeader">BRUH</h3>
 			<hr></hr>
 			<p>Address, beers with prices and types</p>
 			<button id="testButton" class="testButton" name="testButton"
