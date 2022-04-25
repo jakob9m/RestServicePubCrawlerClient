@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import org.ics.eao.PubCrawlerEAOImplLocal;
 import org.ics.ejb.Beer;
 import org.ics.ejb.Pub;
+import org.ics.ejb.Serves;
 
 /**
  * Session Bean implementation class Facade
@@ -65,5 +66,10 @@ public class Facade implements FacadeLocal {
 	public ArrayList<Pub>getAllPubs() {
 		return PubCrawlerEAO.getAllPubs();
 	}
+	
+	public ArrayList<Serves>getBeersByPub(String pubName){
+		return PubCrawlerEAO.getBeersByPub(pubName);
+	}
+
 
 }

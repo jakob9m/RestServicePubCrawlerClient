@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import org.ics.ejb.Beer;
 import org.ics.ejb.Pub;
+import org.ics.ejb.Serves;
 
 @Local
 public interface PubCrawlerEAOImplLocal {
@@ -19,4 +20,5 @@ public interface PubCrawlerEAOImplLocal {
 	public Pub createPub(Pub pub);
 	public Pub updatePub(Pub pub);
 	public void deletePub(String pubName);
+	public ArrayList<Serves>getBeersByPub(String pubName);
 }

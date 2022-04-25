@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.ics.ejb.Beer;
 import org.ics.ejb.Pub;
+import org.ics.ejb.Serves;
 import org.ics.facade.FacadeLocal;
 
 /**
@@ -117,6 +118,13 @@ public class PubCrawlerServerlet extends HttpServlet {
 				sendAsJsonBeer(response, allBeers);
 			} catch (Exception e) {
 				System.out.println("Något är wack med getAllBeers");
+			}
+		} else if (jsonRoot.getString("kind").equals("beersBypub")) {
+			try {
+				ArrayList<Serves> beersByPub = facade.getBeersByPub(jsonRoot.getString("pubName"));
+				sendAsJsonServes(response, beersByPub);
+			} catch (Exception e) {
+				System.out.println("Något är wack med getBeersByPub");
 			}
 		} else {
 			try {
@@ -265,6 +273,27 @@ public class PubCrawlerServerlet extends HttpServlet {
 		out.flush();
 	}
 
+	private void sendAsJsonServes(HttpServletResponse response, ArrayList<Serves> serves) throws IOException {
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		if (serves != null) {
+			JsonArrayBuilder array = Json.createArrayBuilder();
+			for (Serves s : serves) {
+				if (s != null) {
+					JsonObjectBuilder o = Json.createObjectBuilder();
+					o.add("pubName", String.valueOf(s.getpubName()));
+					o.add("beerName", String.valueOf(s.getBeerName()));
+					array.add(o);
+				}
+			}
+			JsonArray jsonArray = array.build();
+			out.print(jsonArray);
+		} else {
+			out.print("[]");
+		}
+		out.flush();
+	}
+	
 //	private void sendAsJson(HttpServletResponse response, ArrayList<Pub> pubs) throws IOException {
 //		PrintWriter out = response.getWriter();
 //		response.setContentType("application/json");
