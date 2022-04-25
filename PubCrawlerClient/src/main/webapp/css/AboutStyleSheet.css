@@ -1,0 +1,126 @@
+
+.Title {
+	font-weight: 600;
+	font-size: 3rem;
+	position: relative;	
+	left: 1650px;
+	top: 25px; 
+	margin: 42px auto 0 calc((( 100% - 1140px)/2)+ 439px);
+	transform: translate(-50%, -50%);
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
+}
+
+body {
+	background-image: url('AboutPage.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	margin:0px; 
+	height:100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	
+}
+
+.NavigationMenu {
+	position: relative; 
+	top: -25px; 
+	left: 75px; 
+	
+}
+.NavigationMenu li {
+    margin-right: 10px;
+	
+}
+
+.navigationContainer {
+	    margin-right: 40px;
+	
+	
+}
+
+.btnHome {
+	position: relative;
+	border-radius: 10px;
+	top: -10px; 
+	width: 150px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnAbout {
+	position: relative;
+	border-radius: 10px;
+	width: 75px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnTest {
+	position: relative;
+	border-radius: 10px;
+	width: 75px;
+	top: 10px; 
+	height: 25px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #ff1f8f;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.InfoBoxDiv {
+	position: relative;
+	left: 0px;
+	top: 400px;
+	height: 50%;
+	width: 100%;
+}
+
+
+
+.InfoBox {
+	resize: none;
+	width: 35%;
+	float: left;
+	height: 400px;
+	width: 100%;
+	color:  #ff1f8f;
+  background-color: black;
+/*   	border-radius: 10px; */
+/*   	border: white; */
+  	 	font-size: 16px; 
+}
+
+footer {
+	text-align: center; 
+	background-color: black; 
+	 position: fixed;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+.footerText  {
+	color: White; 
+}
