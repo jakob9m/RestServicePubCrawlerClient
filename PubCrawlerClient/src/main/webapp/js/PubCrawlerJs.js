@@ -59,7 +59,7 @@ $(document).ready(function() {
 				alert("Error Add");
 				console.log("Ajax: " + status);
 			}
-		}else{
+		} else {
 			$("#beerName").attr("placeholder", "Fill out each field!");
 		}
 	})//addbtnclick
@@ -87,7 +87,7 @@ $(document).ready(function() {
 				$("#pubName").attr("placeholder", "Could not update");
 				console.log("Ajax-find: " + status);
 			}
-		}else{
+		} else {
 			$("#pubAddress").attr("placeholder", "Type the new address here");
 		}
 	})//uppdatebtnclick
@@ -116,7 +116,7 @@ $(document).ready(function() {
 				$("#beerName").attr("placeholder", "Could not update");
 				console.log("Ajax-find: " + status);
 			}
-		}else{
+		} else {
 			$("#beerName").attr("placeholder", "Fill out each field!");
 		}
 	})//uppdatebtnclick
@@ -191,6 +191,20 @@ $(document).ready(function() {
 			console.log("Ajax-find beers: " + status);
 		}
 	})
+
+	$.ajax({
+		method: "GET",
+		url: "http://api.ipstack.com/194.47.249.5?access_key=3f5b716dcff15e58719f97d0b60a0341",
+		error: ajaxReturn_Error,
+		success: ajaxReturn_Success
+	})
+	function ajaxReturn_Success(result, status, xhr) {
+		ParseJsonFileWeather(result);
+	}
+	function ajaxReturn_Error(result, status, xhr) {
+		console.log("Ajax-api-stack: " + status);
+	}
+
 });//End ready function
 
 function getPubs() {
@@ -317,7 +331,7 @@ function buttonClick(String) {
 	getPubInfo(String);
 }
 
-function beerButtonClicked(String){
+function beerButtonClicked(String) {
 	var selectedBeer = document.getElementById("selectedBeer");
 	selectedBeer.innerText = String;
 	console.log(selectedBeer.innerText);
@@ -325,4 +339,42 @@ function beerButtonClicked(String){
 
 function clicked() {
 	button.classList.toggle('active');
+}
+
+
+function ParseJsonFileWeather(result) {
+	var lat = result.latitude;
+	var long = result.longitude;
+	var city = result.city;
+	var ipNbr = result.ip
+	$("#city").text(city);
+	$("#ipNbr").text(ipNbr);
+	$.ajax({
+		method: "GET",
+		url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=metric" + "&APPID=596717b4887c33b3bd6ba716600cc198",
+		error: ajaxWeatherReturn_Error,
+		success: ajaxWeatherReturn_Success
+	})
+
+	function ajaxWeatherReturn_Success(result, status, xhr) {
+		var sunrise = result.sys.sunrise;
+		var sunset = result.sys.sunset;
+
+		var sunriseDate = new Date(sunrise * 1000);
+		var timeStrSunrise = sunriseDate.toLocaleTimeString("sv-SE");
+		var sunsetDate = new Date(sunset * 1000);
+		var timeStrSunset = sunsetDate.toLocaleTimeString("sv-SE");
+
+		$("#sunrise").text("Sunrise: " + timeStrSunrise);
+		$("#sunset").text("Sunset: " + timeStrSunset);
+
+		$("#weather").text(result.weather[0].main);
+
+		$("#degree").text(result.main.temp + " \u2103");
+	}//ajaxWeatherReturn_Success
+
+	function ajaxWeatherReturn_Error(result, status, xhr) {
+		alert("Error i OpenWeaterMap Ajax");
+		console.log("Ajax-find movie: " + status);
+	}
 }
