@@ -13,6 +13,7 @@
 	
 </script>
 <script src="js/PubCrawlerJs.js"></script>
+
 <style>
 * {
 	box-sizing: border-box;
@@ -50,8 +51,7 @@
 	cursor: pointer;
 }
 
-.pubButton:active,
-.active {
+.pubButton:active, .active {
 	background: #e5e5e5;
 	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
 	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
@@ -67,13 +67,19 @@
 	cursor: pointer;
 }
 
-.beerButton:active,
-.active {
+.beerButton:active, .active {
 	background: #e5e5e5;
 	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
 	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
 	box-shadow: inset 0px 0px 5px #c1c1c1;
 	outline: none;
+}
+
+aside {
+	float: right;
+	width: 30%;
+	background-color: black;
+	color: #ad1585;
 }
 </style>
 </head>
@@ -116,7 +122,7 @@
 			<h2 id="pubInfo"></h2>
 			<h3 id="pubAddressHeader">Address</h3>
 			<hr></hr>
-			<p>This pub serves: </p>
+			<p>This pub serves:</p>
 			<ul id="servesList"></ul>
 		</div>
 		<div class="column" style="width: 10%">
@@ -150,5 +156,29 @@
 			<ul id="beerList"></ul>
 		</div>
 	</div>
+
+	<aside>
+		<table id="asideTable">
+			<tr>
+				<th><span id="city"></span></th>
+				<th><span></span></th>
+				<th><span></span></th>
+				<th><span id="ipNbr"></span></th>
+			</tr>
+			<tr>
+				<td><span id="degree"></span></td>
+				<td><span id="weather"></span></td>
+				<td><span></span></td>
+				<td><span></span></td>
+			</tr>
+			<tr>
+				<td colspan="4"><span id="sunrise"></span></td>
+			</tr>
+			<tr>
+				<td colspan="4"><span id="sunset"></span></td>
+			</tr>
+		</table>
+	</aside>
+
 </body>
 </html>
