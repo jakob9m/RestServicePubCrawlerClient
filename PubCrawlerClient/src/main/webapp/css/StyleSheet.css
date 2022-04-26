@@ -7,7 +7,8 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	overflow-x: hidden;
+ 	overflow-x: hidden; 
+    overflow-y: hidden;
 }
 
 .pubCrawlerTitle {
@@ -76,8 +77,8 @@ body {
 
 .btnAddBeerToSelPub {
 	position: relative; 
-	top: -550px; 
-    left: 825px;
+	top: -430px; 
+    left: 780px;
 	width: 150px;
 	height: 25px;
 	border-radius: 10px;
@@ -243,13 +244,60 @@ body {
 		-5px 0 black;
 }
 
+.ServesColumn {
+	position: relative; 
+	background-color: black; 
+	width: 25%; 
+	height: 400px;
+	border-radius: 10px;
+	left: 650px; 
+	top: -100px; 
+	 
+}
+
+.PubAddressHeader {
+	position: relative; 
+	top: -375px; 
+	left: 50px; 
+	color: white; 
+}
+.ServesPubInfo {
+	position: relative; 
+	top: -375px; 
+	left: 50px; 
+	color: white; 
+	
+}
+.ServesTitle {
+	color: White; 
+	position: relative; 
+	top: -375px; 
+	left: 50px; 
+}
+
+.servesLists {
+	color:white;
+	position: relative; 
+	top: -375px; 
+	left: 50px;  
+}
+
+.hr {
+	color:#0000ffff ; 
+}
+
+.selectedBeer {
+	position: relative; 
+	left: 50px; 
+	color: white; 
+}
 
 .BeerColumn {
 	position: relative; 
 	width: 20%;
 	float: left;
 	height: 400px; 
-	 left: 925px;
+	 left: 1000px;
 	 top: -75px;  
 	  background-color: black;
 	  font-size: 16px; 
@@ -261,7 +309,7 @@ body {
 	 	width: 20%;
 		float: left;
 	 height: 400px; 
-	 left: 150px;
+	 left: 50px;
 	 top:  -75px;  
 	  background-color: black;
 	  font-size: 16px; 
@@ -287,40 +335,41 @@ body {
 }
 
 
-.InfoBox {
-	resize: none;
-	width: 20%;
-	float: left;
-	height: 400px;
-	width: 100%;
-	color:  #ff1f8f;
-  background-color: black;
-  	border-radius: 10px;
-  	border: white;
-  	 	font-size: 16px; 
+/* .InfoBoxDiv { */
+/* 	resize: none; */
+/* 	width: 20%; */
+/* 	float: left; */
+/* 	height: 400px; */
+/* 	width: 100%; */
+/* 	color:  #ff1f8f; */
+/*   background-color: white; */
+/*   	border-radius: 10px; */
+/*   	border: white; */
+/*   	 	font-size: 16px;  */
 
-}
+/* } */
 
 .BeerForm {
 	position: relative; 
-	left: 700px;
-	top: 325px; 
-	 
+	left: 1100px;
+	top: -450px; 
+	 width: 241px;
 }
 
 .PubForm {
 	position: relative; 
-	left: -600px;
-	top: 260px;
+	left: 405px;
+	top: -600px;
+	width: 241px;
 }
 
-.InfoBoxDiv {
-	position: relative;
-	left: 670px;
-	top: -500px;
-	height: 50px;
-	width: 25%;
-}
+/*.InfoBoxDiv { /*
+/* 	position: relative; */
+/* 	left: 670px; */
+/* 	top: -500px; */
+/* 	height: 50px; */
+/* 	width: 25%; */
+/*} */
 
 .addressLabel {
 	color: black;
@@ -339,16 +388,16 @@ body {
 
 .UpdDelBeerForm {
 	position: relative; 
-	top: -325px;
-	left: 1500px;  
+	top: -555px;
+	left: 1190px;  
 	width: 180px; 
 	
 }
 
 .UpdDelPubForm {
 	position: relative; 
-	top:  -368px;
-	left:  200px;  
+	top:  -644px;
+	left:  495px;  
 	width: 180px;  
 }
 
@@ -402,7 +451,7 @@ body {
 	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
 	margin: -4px calc((( 100% - 1140px)/2)+ 19px) 0 auto;
 	position: relative;
-	left: 300px;
+	left: 200px;
 	top: 0px
 }
 
@@ -411,7 +460,7 @@ body {
 	font-size: 2rem;
 	margin: 0 auto;
 	position: relative;
-	left: 1400px;
+	left: 1500px;
 	top: -100px;
 	letter-spacing: 0.1em;
 	-webkit-text-fill-color: transparent;
@@ -483,6 +532,18 @@ aside {
 	border-radius: 3px;
 	cursor: pointer;
 }
+
+.pubButton:focus {
+ outline: none;
+  background-color: #ff1f8f;
+
+}
+.beerButton:focus {
+ outline: none;
+  background-color: #ff1f8f;
+
+}
+
 
 .pubButton:active,
 .active {

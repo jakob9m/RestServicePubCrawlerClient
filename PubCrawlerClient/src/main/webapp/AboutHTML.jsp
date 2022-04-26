@@ -12,7 +12,7 @@
   <ul class = navigationContainer>
     <li ><a href="Html.jsp" class = btnHome >Home </a></li>
     <li><a href="AboutHtml.jsp" class = btnAbout >About</a></li>
-    <li><a href="#" class = btnTest >Test</a></li>
+    <li><a href="Test.jsp" class = btnTest >Test</a></li>
   </ul>
 </nav>
   </div>
