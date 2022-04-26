@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
 <title>Pub Crawler</title>
-<link rel="stylesheet" href="CSS/HomeStyleSheet.css">
+<link rel="stylesheet" href="css/StyleSheet.css">
 </head>
 <body>
 	<section class="" id="">
@@ -14,8 +14,8 @@
 		<div>
 			<nav class=NavigationMenu>
 				<ul class=navigationContainer>
-					<li><a href="Test.jsp" class=btnHome>Home </a></li>
-					<li><a href="About.jsp" class=btnAbout>About</a></li>
+					<li><a href="Html.jsp" class=btnHome>Home </a></li>
+					<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
 					<li><a href="#" class=btnTest>Test</a></li>
 				</ul>
 			</nav>

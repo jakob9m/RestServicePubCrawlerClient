@@ -3,15 +3,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="CSS/AboutStyleSheet.css">
+<link rel="stylesheet" href="css/AboutStyleSheet.css">
 </head>
 <body>
 <h1 class ="Title"> About PubCrawler </h1>
    <div >
       <nav class= NavigationMenu>
   <ul class = navigationContainer>
-    <li ><a href="Test.jsp" class = btnHome >Home </a></li>
-    <li><a href="About.jsp" class = btnAbout >About</a></li>
+    <li ><a href="Html.jsp" class = btnHome >Home </a></li>
+    <li><a href="AboutHtml.jsp" class = btnAbout >About</a></li>
     <li><a href="#" class = btnTest >Test</a></li>
   </ul>
 </nav>
