@@ -296,15 +296,17 @@ body {
 ::-webkit-scrollbar {
 	background: black;
 	width: 10px;
+	border-radius: 20px;
 }
 
 ::-webkit-scrollbar-button {
 	background: black;
+	border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb {
 	opacity: 70%;
-	border-radius: 10px;
+	border-radius: 20px;
 	background: rgb(25, 25, 25);
 	border: 1px solid rgb(0, 0, 0);
 	width: 1px;
@@ -315,6 +317,7 @@ body {
 	background: rgb(0, 0, 0);
 	border: 4px solid transparent;
 	background-clip: content-box;
+	border-radius: 20px;
 }
 /* the list of pubs  */
 .buttonColumnLeft {
