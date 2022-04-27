@@ -12,6 +12,9 @@
 </head>
 <body>
 	<section class="" id="">
+		<div> 
+		<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
+		</div>
 		<h1 class="header1">
 			<span class="pubCrawlerTitle">Pub Crawler </span> <br>
 		</h1>
@@ -116,7 +119,7 @@
 			value="Add beer to selected pub"> <br>
 	</section>
 	<footer>
-		<p class=footerText>Copyright &copy; PubCrawler.com</p>
+		<p class=footerText>Copyright &copy; PubCrawler.com <img class = footerLogo src ="css/PubCrawlerLogo.jpg" alt=""></p>
 	</footer>
 </body>
 </html>
