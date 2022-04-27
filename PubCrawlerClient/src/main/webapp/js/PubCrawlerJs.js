@@ -28,7 +28,6 @@ $(document).ready(function() {
 				getPubs();
 			}
 			function ajaxAddReturnError(result, status, xhr) {
-				alert("Error Add");
 				console.log("Ajax: " + status);
 			}
 		}
@@ -56,7 +55,6 @@ $(document).ready(function() {
 				getBeers();
 			}
 			function ajaxAddReturnError(result, status, xhr) {
-				alert("Error Add");
 				console.log("Ajax: " + status);
 			}
 		} else {
@@ -140,7 +138,6 @@ $(document).ready(function() {
 				getPubs();
 			}
 			function ajaxDelReturnError(result, status, xhr) {
-				alert("Error");
 				console.log("Ajax-find: " + status);
 			}
 		}
@@ -164,7 +161,6 @@ $(document).ready(function() {
 				getBeers();
 			}
 			function ajaxDelReturnError(result, status, xhr) {
-				alert("Error");
 				console.log("Ajax-find: " + status);
 			}
 		}
@@ -231,7 +227,6 @@ function getPubs() {
 		})
 	}
 	function ajaxFindReturnError(result, status, xhr) {
-		alert("Error");
 		console.log("Ajax-find pubs: " + status);
 	}
 }
@@ -260,7 +255,6 @@ function getBeers() {
 		})
 	}
 	function ajaxFindReturnError(result, status, xhr) {
-		alert("Error");
 		console.log("Ajax-find beers: " + status);
 	}
 }
@@ -281,7 +275,6 @@ function getPubInfo(name) {
 		getBeersByPub(name)
 	}
 	function ajaxFindReturnError(result, status, xhr) {
-		alert("Error");
 		console.log("Ajax-find beers: " + status);
 	}
 }
@@ -306,7 +299,6 @@ function getBeersByPub(name) {
 		})
 	}
 	function ajaxFindReturnError(result, status, xhr) {
-		alert("Error");
 		console.log("Ajax-find beers: " + status);
 	}
 }
@@ -334,13 +326,11 @@ function buttonClick(String) {
 function beerButtonClicked(String) {
 	var selectedBeer = document.getElementById("selectedBeer");
 	selectedBeer.innerText = String;
-	console.log(selectedBeer.innerText);
 }
 
 function clicked() {
 	button.classList.toggle('active');
 }
-
 
 function ParseJsonFileWeather(result) {
 	var lat = result.latitude;
@@ -374,7 +364,6 @@ function ParseJsonFileWeather(result) {
 	}//ajaxWeatherReturn_Success
 
 	function ajaxWeatherReturn_Error(result, status, xhr) {
-		alert("Error i OpenWeaterMap Ajax");
-		console.log("Ajax-find movie: " + status);
+		console.log("API-Weather: " + status);
 	}
 }
