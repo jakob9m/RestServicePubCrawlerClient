@@ -219,7 +219,7 @@ function getPubs() {
 			var button = document.createElement("button")
 			button.setAttribute("class", "pubButton");
 			button.setAttribute("name", e.pubName);
-			button.setAttribute("onclick", "buttonClick(this.name)");
+			button.setAttribute("onclick", "buttonClick(this.name, this.id)");
 			var br = document.createElement("br")
 			button.innerText = e.pubName;
 			ul.append(button);
@@ -247,7 +247,8 @@ function getBeers() {
 			var button = document.createElement("button");
 			button.setAttribute("class", "beerButton");
 			button.setAttribute("name", e.beerName);
-			button.setAttribute("onclick", "beerButtonClicked(this.name)");
+			button.setAttribute("id", e.beerPrice + "kr - " + e.beerType);
+			button.setAttribute("onclick", "beerButtonClicked(this.name, this.id)");
 			var br = document.createElement("br");
 			button.innerText = e.beerName;
 			ul.append(button);
@@ -323,9 +324,9 @@ function buttonClick(String) {
 	getPubInfo(String);
 }
 
-function beerButtonClicked(String) {
+function beerButtonClicked(name, priceAndType) {
 	var selectedBeer = document.getElementById("selectedBeer");
-	selectedBeer.innerText = String;
+	selectedBeer.innerText = name + " " + priceAndType;
 }
 
 function clicked() {
