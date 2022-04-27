@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="css/StyleSheet.css">
 </head>
 <body>
-	<section class="" id="">
 		<div> 
 		<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
 		</div>
@@ -23,7 +22,7 @@
 				<ul class=navigationContainer>
 					<li><a href="Html.jsp" class=btnHome>Home </a></li>
 					<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
-					<li><a href="Test.jps" class=btnTest>Test</a></li>
+					<li><a href="Test.jsp" class=btnTest>Test</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -34,13 +33,14 @@
 			<h4 class="infoTitle">Info about selected pub</h4>
 			<span class="beersTitle">Beers</span> <br>
 		</div>
+	<main>
 		<div class=PubColumn>
 			<div class=container>
 				<ul id="pubList"></ul>
 			</div>
 		</div>
 		<div class=BeerColumn>
-			<p class = selectedBeer id="selectedBeer"></p>
+			<p class = selectedBeer id="selectedBeer"> Info about selected Beer: </p>
 			<ul id="beerList"></ul>
 		</div>
 		<div class="ServesColumn">
@@ -117,7 +117,7 @@
 		</form>
 		<input type="button" class="btnAddBeerToSelPub" id="addBeerToPub"
 			value="Add beer to selected pub"> <br>
-	</section>
+		</main>
 	<footer>
 		<p class=footerText>Copyright &copy; PubCrawler.com <img class = footerLogo src ="css/PubCrawlerLogo.jpg" alt=""></p>
 	</footer>

@@ -1,4 +1,11 @@
 
+.headerLogo {
+	position: Absolute;  
+	float: left; 
+}
+
+
+
 .Title {
 	font-weight: 600;
 	font-size: 3rem;
@@ -11,7 +18,7 @@
 	-webkit-text-fill-color: transparent;
 	-webkit-text-stroke-width: 3px;
 	-webkit-text-stroke-color: white;
-	text-shadow: 8px 8px #ff1f8f, 20px 20px #000000;
+	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
 }
 
 body {
@@ -54,7 +61,7 @@ body {
 	font-weight: bold;
 	color: White;
 	background: black;
-	border: 2px solid #ff1f8f;
+	border: 2px solid #cdb863;
 	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
 		-5px 0 black;
 }
@@ -69,7 +76,7 @@ body {
 	font-weight: bold;
 	color: White;
 	background: black;
-	border: 2px solid #ff1f8f;
+	border: 2px solid #cdb863;
 	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
 		-5px 0 black;
 }
@@ -85,7 +92,7 @@ body {
 	font-weight: bold;
 	color: White;
 	background: black;
-	border: 2px solid #ff1f8f;
+	border: 2px solid #cdb863;
 	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
 		-5px 0 black;
 }
@@ -106,16 +113,16 @@ body {
 	float: left;
 	height: 400px;
 	width: 100%;
-	color:  #ff1f8f;
+	color: #cdb863;
   background-color: black;
-/*   	border-radius: 10px; */
-/*   	border: white; */
   	 	font-size: 16px; 
+  	 	border-color: #cdb863; 
 }
 
 footer {
 	text-align: center; 
-	background-color: black; 
+	background-color: black;
+	opacity: 70%;  
 	 position: fixed;
   width: 100%;
   left: 0;
