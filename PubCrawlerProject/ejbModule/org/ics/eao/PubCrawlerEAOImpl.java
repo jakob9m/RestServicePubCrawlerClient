@@ -39,6 +39,7 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 	public void deleteBeer(String beerName) {
 		Beer beer = this.findBeer(beerName);
 		if (beer != null) {
+			System.out.println("Hejdå bärs");
 			em.remove(beer);
 		}
 	}

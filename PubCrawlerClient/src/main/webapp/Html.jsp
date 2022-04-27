@@ -5,34 +5,35 @@
 <meta charset="utf-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+	
 </script>
 <script src="js/PubCrawlerJs.js"></script>
 <title>Pub Crawler</title>
 <link rel="stylesheet" href="css/StyleSheet.css">
 </head>
 <body>
-		<div> 
-		<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
-		</div>
-		<h1 class="header1">
-			<span class="pubCrawlerTitle">Pub Crawler </span> <br>
-		</h1>
-		<div>
-			<nav class=NavigationMenu>
-				<ul class=navigationContainer>
-					<li><a href="Html.jsp" class=btnHome>Home </a></li>
-					<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
-					<li><a href="Test.jsp" class=btnTest>Test</a></li>
-				</ul>
-			</nav>
-		</div>
-		<div class="">
-			<h4 class="pubsTitle">Pubs</h4>
-		</div>
-		<div class="">
-			<h4 class="infoTitle">Info about selected pub</h4>
-			<span class="beersTitle">Beers</span> <br>
-		</div>
+	<div>
+		<img class=headerLogo src="css/PubCrawlerLogo.jpg" alt="">
+	</div>
+	<h1 class="header1">
+		<span class="pubCrawlerTitle">Pub Crawler </span> <br>
+	</h1>
+	<div>
+		<nav class=NavigationMenu>
+			<ul class=navigationContainer>
+				<li><a href="Html.jsp" class=btnHome>Home </a></li>
+				<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
+				<li><a href="Test.jsp" class=btnTest>Test</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="">
+		<h4 class="pubsTitle">Pubs</h4>
+	</div>
+	<div class="">
+		<h4 class="infoTitle">Info about selected pub</h4>
+		<span class="beersTitle">Beers</span> <br>
+	</div>
 	<main>
 		<div class=PubColumn>
 			<div class=container>
@@ -40,12 +41,13 @@
 			</div>
 		</div>
 		<div class=BeerColumn>
-			<p class = selectedBeer id="selectedBeer"> Info about selected Beer: </p>
+			<p class=selectedBeer id="selectedBeer">Info about selected Beer:
+			</p>
 			<ul id="beerList"></ul>
 		</div>
 		<div class="ServesColumn">
-			<h2 class = ServesPubInfo id="pubInfo"></h2>
-			<h3 class = PubAddressHeader id="pubAddressHeader">Address</h3>
+			<h2 class=ServesPubInfo id="pubInfo"></h2>
+			<h3 class=PubAddressHeader id="pubAddressHeader">Address</h3>
 			<p class=ServesTitle>This pub serves:</p>
 			<ul class=servesLists id="servesList"></ul>
 		</div>
@@ -90,19 +92,19 @@
 					class="btnAddBeer">
 			</div>
 		</form>
-			<form class="PubForm">
-				<div class="">
-					<label for="pubName">Name:</label> <input type="text"
-						placeholder="E.g Barrbaren...." id="pubName" name="name"
-						class="TxtPubName">
-				</div>
-				<label for="pubAddress" class="addressLabel">Address: </label> <input
-					type="text" placeholder="E.g. Examplestreet 1..." id="pubAddress"
-					name="address" class="TxtPubAddress">
-				<div class="">
-					<input type="button" value="Add pub" id="addPub" class="btnAddPub">
-				</div>
-			</form>
+		<form class="PubForm">
+			<div class="">
+				<label for="pubName">Name:</label> <input type="text"
+					placeholder="E.g Barrbaren...." id="pubName" name="name"
+					class="TxtPubName">
+			</div>
+			<label for="pubAddress" class="addressLabel">Address: </label> <input
+				type="text" placeholder="E.g. Examplestreet 1..." id="pubAddress"
+				name="address" class="TxtPubAddress">
+			<div class="">
+				<input type="button" value="Add pub" id="addPub" class="btnAddPub">
+			</div>
+		</form>
 		<form class="UpdDelBeerForm">
 			<input type="button" class="btnUpdateSelBeer" id="updateBeer"
 				value="Update selected beer"> <br> <input type="button"
@@ -117,9 +119,12 @@
 		</form>
 		<input type="button" class="btnAddBeerToSelPub" id="addBeerToPub"
 			value="Add beer to selected pub"> <br>
-		</main>
+	</main>
 	<footer>
-		<p class=footerText>Copyright &copy; PubCrawler.com <img class = footerLogo src ="css/PubCrawlerLogo.jpg" alt=""></p>
+		<p class=footerText>
+			Copyright &copy; PubCrawler.com <img class=footerLogo
+				src="css/PubCrawlerLogo.jpg" alt="">
+		</p>
 	</footer>
 </body>
 </html>
