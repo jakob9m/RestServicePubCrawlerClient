@@ -168,7 +168,7 @@ $(document).ready(function() {
 
 	$("#addBeerToPub").click(function() {
 		pubName = document.getElementById("pubInfo").innerText;
-		beerName = document.getElementById("selectedBeer").innerText;
+		beerName = document.getElementById("selectedBeer").name;
 		var obj = { kind: "beerToPub", pubName: pubName, beerName: beerName };
 		var jsonString = JSON.stringify(obj);
 		$.ajax({
