@@ -143,7 +143,7 @@ $(document).ready(function() {
 		}
 	})//btnclick
 	$("#deleteBeer").click(function() {
-		var beerName = document.getElementById("selectedBeer").innerText;
+		var beerName = document.getElementById("selectedBeer").name;
 		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "") {
@@ -327,6 +327,7 @@ function buttonClick(String) {
 function beerButtonClicked(name, priceAndType) {
 	var selectedBeer = document.getElementById("selectedBeer");
 	selectedBeer.innerText = name + " " + priceAndType;
+	selectedBeer.name = name;
 }
 
 function clicked() {
