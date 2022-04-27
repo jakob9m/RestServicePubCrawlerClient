@@ -41,8 +41,7 @@
 			</div>
 		</div>
 		<div class=BeerColumn>
-			<p class=selectedBeer id="selectedBeer">Info about selected Beer:
-			</p>
+			<p class=selectedBeer id="selectedBeer">Info about selected Beer:</p>
 			<ul id="beerList"></ul>
 		</div>
 		<div class="ServesColumn">
@@ -73,50 +72,49 @@
 				</tr>
 			</table>
 		</aside>
+
 		<form class="BeerForm">
 			<label for="beerName" class="u-label">Brand:</label> <input
 				type="text" placeholder="E.g. Karneöl..." id="beerName" name="name"
-				class="txtBeerName">
+				class="placeholders">
 			<div>
 				<label for="beerPrice" class="u-label">Price:</label> <input
 					type="text" placeholder="E.g. 25 Kr..." id="beerPrice" name="price"
-					class="txtPrice">
+					class="placeholders">
 			</div>
-			<div class="">
-				<label for="beerType" class="u-label">Type: </label> <input
-					type="text" placeholder="E.g. Lager..." id="beerType" name="type"
-					class="txtType">
+			<label for="beerType" class="u-label">Type: </label> <input
+				type="text" placeholder="E.g. Lager..." id="beerType" name="type"
+				class="placeholders">
+			<div>
+				<br> <br> <input type="button" value="Add Beer"
+					id="addBeer" class="crudButtonsBeer"><br> <br> <input
+					type="button" class="crudButtonsBeer" id="updateBeer"
+					value="Update selected beer"><br> <br> <input
+					type="button" class="crudButtonsBeer" id="deleteBeer"
+					value="Delete selected Beer"><br>
+			</div>
+		</form>
+
+
+		<form class="PubForm">
+			<label for="pubName" class="u-label">Name:</label> <input type="text"
+				placeholder="E.g Barrbaren...." id="pubName" name="name"
+				class="placeholders">
+			<div>
+				<label for="pubAddress" class="u-label">Address: </label> <input
+					type="text" placeholder="E.g. Examplestreet 1..." id="pubAddress"
+					name="address" class="placeholders">
 			</div>
 			<div>
-				<input type="button" value="Add Beer" id="addBeer"
-					class="btnAddBeer">
+				<br> <br> <input type="button" value="Add pub" id="addPub"
+					class="crudButtonsPub"><br> <br> <input
+					type="button" class="crudButtonsPub" id="updatePub"
+					value="Update selected pub"><br> <br> <input
+					type="button" class="crudButtonsPub" id="deletePub"
+					value="Delete selected pub"><br>
 			</div>
 		</form>
-		<form class="PubForm">
-			<div class="">
-				<label for="pubName">Name:</label> <input type="text"
-					placeholder="E.g Barrbaren...." id="pubName" name="name"
-					class="TxtPubName">
-			</div>
-			<label for="pubAddress" class="addressLabel">Address: </label> <input
-				type="text" placeholder="E.g. Examplestreet 1..." id="pubAddress"
-				name="address" class="TxtPubAddress">
-			<div class="">
-				<input type="button" value="Add pub" id="addPub" class="btnAddPub">
-			</div>
-		</form>
-		<form class="UpdDelBeerForm">
-			<input type="button" class="btnUpdateSelBeer" id="updateBeer"
-				value="Update selected beer"> <br> <input type="button"
-				class="btnDeleteSelBeer" id="deleteBeer"
-				value="Delete selected Beer"> <br>
-		</form>
-		<form class="UpdDelPubForm">
-			<input type="button" class="btnUpdateSelPub" id="updatePub"
-				value="Update selected pub"> <br> <input type="button"
-				class="btnDeleteSelPub" id="deletePub" value="Delete selected pub">
-			<br>
-		</form>
+
 		<input type="button" class="btnAddBeerToSelPub" id="addBeerToPub"
 			value="Add beer to selected pub"> <br>
 	</main>

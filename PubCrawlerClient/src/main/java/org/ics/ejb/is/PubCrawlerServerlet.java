@@ -158,7 +158,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 		} else if (jsonRoot.getString("kind").equals("Beer")) {
 			try {
 				facade.deleteBeer(jsonRoot.getString("beerName"));
-				System.out.println("Beer was deleted");
 			} catch (Exception e) {
 				System.out.println("Deletion failed");
 			}
