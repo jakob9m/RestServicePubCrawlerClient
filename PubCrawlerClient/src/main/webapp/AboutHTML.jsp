@@ -6,13 +6,16 @@
 <link rel="stylesheet" href="css/AboutStyleSheet.css">
 </head>
 <body>
+<div> 
+		<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
+		</div>
 <h1 class ="Title"> About PubCrawler </h1>
    <div >
       <nav class= NavigationMenu>
   <ul class = navigationContainer>
-    <li ><a href="Html.jsp" class = btnHome >Home </a></li>
-    <li><a href="AboutHtml.jsp" class = btnAbout >About</a></li>
-    <li><a href="Test.jsp" class = btnTest >Test</a></li>
+   <li><a href="Html.jsp" class=btnHome>Home </a></li>
+					<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
+					<li><a href="Test.jsp" class=btnTest>Test</a></li>
   </ul>
 </nav>
   </div>
