@@ -1,0 +1,588 @@
+
+.header {
+	background-color: black;
+	opacity: 70%;  
+	 position: relative;
+  width: 102%;
+  margin-top: -2%; 
+ 
+  
+}
+
+
+.headerLogo {
+	height: 125px;
+	width: 125px;
+	float: left;
+}
+
+body {
+	background-image: url('Beer-Backgrounds.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	overflow-x: hidden;
+	overflow-y: hidden;
+
+}
+
+
+
+.pubCrawlerTitle {
+	font-weight: 600;
+	font-size: 3rem;
+	position: relative;
+	left: 1600px;
+	top: 70px;
+	margin: 42px auto 0 calc((( 100% - 1140px)/2)+ 439px);
+	transform: translate(-50%, -50%);
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+}
+
+
+.u-label {
+	color: white;
+}
+
+.placeholders {
+	background-color: black;
+	opacity: 70%;
+	border-radius: 10px;
+	border-color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+	border-radius: 10px;
+	color: white;
+}
+
+.crudButtonsBeer {
+	position: relative;
+	width: 150px;
+	height: 25px;
+	top: -20px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.crudButtonsPub {
+	position: relative;
+	width: 150px;
+	height: 25px;
+	top: -20px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnAddBeerToSelPub {
+	position: relative;
+	top: -580px;
+	left: 820px;
+	width: 150px;
+	height: 25px;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnAddBeerToSelPub:hover {
+	transition-duration: 0.1s;
+	background-color: #3A3A3A;
+}
+
+.btnAddBeerToSelPub:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnAddBeer:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnAddPub:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnDeleteSelBeer:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnUpdateSelBeer:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnUpdateSelPub:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnDeleteSelPub:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.btnAddPub {
+	position: relative;
+	/* left: 500px; */
+	top: 10px;
+	border-radius: 10px;
+	width: 75px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 10px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.NavigationMenu {
+	position: relative;
+	top: -25px;
+	left: 75px;
+}
+
+.NavigationMenu li {
+	margin-right: 10px;
+}
+
+.navigationContainer {
+	margin-right: 40px;
+}
+
+.btnHome {
+	position: relative;
+	border-radius: 10px;
+	top: -10px;
+	width: 150px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnAbout {
+	position: relative;
+	border-radius: 10px;
+	width: 75px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.btnTest {
+	position: relative;
+	border-radius: 10px;
+	width: 75px;
+	top: 10px;
+	height: 25px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	color: White;
+	background: black;
+	border: 2px solid #cdb863;
+	box-shadow: 5px 5px 0 black, -5px -5px 0 black, -5px 5px 0 black, 5px
+		-5px 0 black;
+}
+
+.ServesColumn {
+	position: relative;
+	background-color: black;
+	width: 25%;
+	height: 400px;
+	border-radius: 10px;
+	left: 650px;
+	top: -100px;
+}
+
+.PubAddressHeader {
+	position: relative;
+	top: -375px;
+	left: 50px;
+	color: white;
+}
+
+.ServesPubInfo {
+	position: relative;
+	top: -375px;
+	left: 50px;
+	color: white;
+}
+
+.ServesTitle {
+	color: White;
+	position: relative;
+	top: -375px;
+	left: 50px;
+}
+
+.servesLists {
+	color: white;
+	position: relative;
+	top: -375px;
+	left: 50px;
+}
+
+.hr {
+	color: #0000ffff;
+}
+
+.selectedBeer {
+	position: relative;
+	left: 50px;
+	color: black;
+	Background: #cdb863;
+}
+
+.BeerColumn {
+	position: relative;
+	width: 15%;
+	float: left;
+	height: 400px;
+	left: 1150px;
+	top: -75px;
+	background-color: black;
+	font-size: 16px;
+	border-radius: 10px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.PubColumn {
+	position: relative;
+	width: 15%;
+	float: left;
+	height: 400px;
+	left: 100px;
+	top: -75px;
+	background-color: black;
+	font-size: 16px;
+	border-radius: 10px;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+	background: black;
+	width: 10px;
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-button {
+	background: black;
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+	opacity: 70%;
+	border-radius: 20px;
+	background: rgb(25, 25, 25);
+	border: 1px solid rgb(0, 0, 0);
+	width: 1px;
+	height: 1px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(0, 0, 0);
+	border: 4px solid transparent;
+	background-clip: content-box;
+	border-radius: 20px;
+}
+
+  /* the list of pubs  */
+.buttonColumnLeft {
+	float: right;
+	border: 1px solid black;
+	padding: 5px;
+	background-color: #cecfc8;
+}
+
+/* the list of beers  */
+.buttonColumnRight {
+	float: left;
+	border: 1px solid black;
+	padding: 2px;
+	background-color: #cecfc8;
+}
+
+.BeerForm {
+	position: relative;
+	left: 1220px;
+	top: -480px;
+	width: 241px;
+}
+
+.PubForm {
+	position: relative;
+	left: 405px;
+	top: -750px;
+	width: 241px;
+
+}
+
+.addressLabel {
+	color: black;
+	left: 500px;
+}
+
+.TxtPubName {
+	background-color: transparent;
+	border-radius: 10px;
+	border-color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.UpdDelBeerForm {
+	position: relative;
+	top: -555px;
+	left: 1220px;
+	width: 180px;
+}
+
+.UpdDelPubForm {
+	position: relative;
+	top: -644px;
+	left: 495px;
+	width: 180px;
+}
+
+.txtType {
+	background-color: transparent;
+	border-radius: 10px;
+	border-color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.txtPrice {
+	background-color: transparent;
+	border-radius: 10px;
+	border-color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.txtBeerName {
+	background-color: transparent;
+	border-radius: 10px;
+	border-color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.TxtPubAddress {
+	background-color: transparent;
+	border-radius: 10px;
+	border-color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.pubsTitle {
+	font-weight: 700;
+	font-size: 2rem;
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+	margin: -4px calc((( 100% - 1140px)/2)+ 19px) 0 auto;
+	position: relative;
+	left: 200px;
+	top: 40px
+}
+
+.beersTitle {
+	font-weight: 700;
+	font-size: 2rem;
+	margin: 0 auto;
+	position: relative;
+	left: 1500px;
+	top: -75px;
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+}
+
+.infoTitle {
+	font-weight: 700;
+	font-size: 2rem;
+	margin: 0 auto;
+	position: relative;
+	left: 700px;
+	top: -70px;
+	letter-spacing: 0.1em;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke-width: 3px;
+	-webkit-text-stroke-color: white;
+	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+}
+
+.PubTable {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	color: white;
+	font-family: sans-serif;
+	min-width: 400px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	position: relative;
+	left: 150px;
+	top: -45px;
+	overflow: scroll;
+}
+
+::placeholder {
+	color: black;
+	opacity: 1;
+}
+
+aside {
+	position: relative;
+	left: 0px;
+	top: -650px;
+	float: right;
+	width: 20%;
+	height: 150%;
+	background-color: black;
+	border-radius: 10px;
+}
+
+#asideTable {
+	padding-top: 10px;
+	text-align: left;
+	color: white;
+}
+
+#asideTable td {
+	text-align: left;
+	padding: 3px;
+}
+
+/* these four classes: pubButton and beerButton, doesn't exist inside the GUI but are generated by the Javascript */
+.pubButton {
+	background: Black;
+	border: 0px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	display: block;
+	margin: 0x 0;
+	padding: 10px;
+	width: 100%;
+	color: white;
+}
+
+.pubButton:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.beerButton:focus {
+	outline: none;
+	background-color: #cdb863;
+}
+
+.pubButton:active, .active {
+	background: #e5e5e5;
+	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+	box-shadow: inset 0px 0px 5px #c1c1c1;
+	outline: none;
+}
+
+.beerButton {
+	background: Black;
+	border: 0px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	display: block;
+	margin: 0x 0;
+	padding: 10px;
+	width: 100%;
+	color: white;
+}
+
+.beerButton:active, .active {
+	background: #e5e5e5;
+	-webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+	-moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+	box-shadow: inset 0px 0px 5px #c1c1c1;
+	outline: none;
+}
+
+.footerLogo {
+	position: relative;
+	left: 500px;
+	height: 50px;
+	width: 50px;
+}
+
+footer {
+	text-align: center;
+	background-color: black;
+	opacity: 70%;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+}
+
+.footerText {
+	color: White;
+}
