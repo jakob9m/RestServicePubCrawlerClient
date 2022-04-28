@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="css/Test.css">
 </head>
 <body>
-<div> 
+		<div class = header>  
 	<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
-		</div>
+		
 <h1 class="header1">
 			<span class="TestTitle">Test of PubCrawler </span> <br>
 		</h1>
@@ -19,6 +19,7 @@
 					<li><a href="Test.jsp" class=btnTest>Test</a></li>
 				</ul>
 			</nav>
+			</div>
 		<div class=TestColumn>Testing...
 			</div>
 			<input type="button" class= TestingButton id="TestBtn" Value = "Test"> 

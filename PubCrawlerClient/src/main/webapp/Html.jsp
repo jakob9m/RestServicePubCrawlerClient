@@ -11,11 +11,10 @@
 <link rel="stylesheet" href="css/StyleSheet.css">
 </head>
 <body>
-		<div> 
+		<div class = header> 
 		<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
-		</div>
-		<h1 class="header1">
-			<span class="pubCrawlerTitle">Pub Crawler </span> <br>
+		
+		<h1 class="pubCrawlerTitle">Pub Crawler
 		</h1>
 		<div>
 			<nav class=NavigationMenu>
@@ -25,6 +24,7 @@
 					<li><a href="Test.jsp" class=btnTest>Test</a></li>
 				</ul>
 			</nav>
+		</div>
 		</div>
 		<div class="">
 			<h4 class="pubsTitle">Pubs</h4>

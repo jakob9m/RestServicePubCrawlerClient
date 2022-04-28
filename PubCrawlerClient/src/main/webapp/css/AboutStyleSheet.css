@@ -1,7 +1,17 @@
+.header {
+	background-color: black;
+	opacity: 70%;  
+	 position: relative;
+  width: 1686x;
+  margin-top: -2%; 
+  height: 141px; 
+}
+
 
 .headerLogo {
-	position: Absolute;  
-	float: left; 
+  height: 125px;
+  width: 125px;
+	float: left;
 }
 
 
@@ -10,8 +20,8 @@
 	font-weight: 600;
 	font-size: 3rem;
 	position: relative;	
-	left: 1650px;
-	top: 25px; 
+	left: 1500px;
+	top: 75px; 
 	margin: 42px auto 0 calc((( 100% - 1140px)/2)+ 439px);
 	transform: translate(-50%, -50%);
 	letter-spacing: 0.1em;
@@ -34,7 +44,7 @@ body {
 }
 
 .NavigationMenu {
-	position: relative; 
+position: relative; 
 	top: -25px; 
 	left: 75px; 
 	
@@ -97,11 +107,12 @@ body {
 		-5px 0 black;
 }
 
+
 .InfoBoxDiv {
 	position: relative;
 	left: 0px;
-	top: 400px;
-	height: 50%;
+	top: 0px;
+	height: 25%;
 	width: 100%;
 }
 
@@ -111,7 +122,7 @@ body {
 	resize: none;
 	width: 35%;
 	float: left;
-	height: 400px;
+	height: 300px;
 	width: 100%;
 	color: #cdb863;
   background-color: black;

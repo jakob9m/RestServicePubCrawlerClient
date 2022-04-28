@@ -1,6 +1,16 @@
-BeerTable {
-	border: 1px solid;
+
+.header {
+	background-color: black;
+	opacity: 70%;  
+	 position: relative;
+  width: 102%;
+  margin-top: -2%; 
+ 
+  
 }
+
+
+
 
 
 .headerLogo {
@@ -14,16 +24,18 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
- 	overflow-x: hidden; 
-    overflow-y: hidden;
+	overflow-x: hidden;  
+     overflow-y: hidden; 
 }
+
+
 
 .pubCrawlerTitle {
 	font-weight: 600;
 	font-size: 3rem;
 	position: relative;	
-	left: 620px;
-	top: 25px; 
+	left: 1565px;
+	top: 70px; 
 	margin: 42px auto 0 calc((( 100% - 1140px)/2)+ 439px);
 	transform: translate(-50%, -50%);
 	letter-spacing: 0.1em;
@@ -32,6 +44,13 @@ body {
 	-webkit-text-stroke-color: white;
 	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
 }
+
+main {
+	
+	position: relative; 
+	top: 0px; 
+}
+
 
 .btnAddBeer {
 	position: relative;
@@ -331,7 +350,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-	  background: Gray; 
+	  background: black; 
 	      width: 10px;
 	  	
 }
@@ -343,18 +362,14 @@ body {
 ::-webkit-scrollbar-thumb {
 	opacity: 70%; 
 	 border-radius: 10px;
- background: rgb(25,25,25);
+ background: #cdb863;
     border: 1px solid rgb(0,0,0);
     width: 1px; 
     height: 1px; 
+    
 }
 
-::-webkit-scrollbar-track {
-    background: rgb(0,0,0);
-    border: 4px solid transparent;
-    background-clip: content-box;
 
-}
 /* the list of pubs  */
 .buttonColumnLeft { 
 	float: right;
@@ -385,6 +400,7 @@ body {
 	left: 405px;
 	top: -600px;
 	width: 241px;
+	
 	 
 }
 
