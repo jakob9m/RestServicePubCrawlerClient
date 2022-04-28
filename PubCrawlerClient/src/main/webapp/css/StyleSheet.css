@@ -1,6 +1,14 @@
-BeerTable {
-	border: 1px solid;
+
+.header {
+	background-color: black;
+	opacity: 70%;  
+	 position: relative;
+  width: 102%;
+  margin-top: -2%; 
+ 
+  
 }
+
 
 .headerLogo {
 	height: 125px;
@@ -15,7 +23,10 @@ body {
 	background-size: cover;
 	overflow-x: hidden;
 	overflow-y: hidden;
+
 }
+
+
 
 .pubCrawlerTitle {
 	font-weight: 600;
@@ -31,6 +42,7 @@ body {
 	-webkit-text-stroke-color: white;
 	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
 }
+
 
 .u-label {
 	color: white;
@@ -319,7 +331,8 @@ body {
 	background-clip: content-box;
 	border-radius: 20px;
 }
-/* the list of pubs  */
+
+  /* the list of pubs  */
 .buttonColumnLeft {
 	float: right;
 	border: 1px solid black;
@@ -347,6 +360,7 @@ body {
 	left: 405px;
 	top: -750px;
 	width: 241px;
+
 }
 
 .addressLabel {
