@@ -496,12 +496,13 @@ body {
 aside {
 	position: relative;
 	left: 0px;
-	top: -650px;
+	top: -740px;
 	float: right;
 	width: 20%;
 	height: 150%;
-	background-color: black;
+	background-color: transparent;
 	border-radius: 10px;
+	opacity: 100%; 
 }
 
 #asideTable {
