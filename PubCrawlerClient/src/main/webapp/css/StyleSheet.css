@@ -32,8 +32,8 @@ body {
 	font-weight: 600;
 	font-size: 3rem;
 	position: relative;
-	left: 620px;
-	top: 25px;
+	left: 1600px;
+	top: 70px;
 	margin: 42px auto 0 calc((( 100% - 1140px)/2)+ 439px);
 	transform: translate(-50%, -50%);
 	letter-spacing: 0.1em;

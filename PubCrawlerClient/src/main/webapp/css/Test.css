@@ -1,5 +1,14 @@
+.header {
+	background-color: black;
+	opacity: 70%;  
+	 position: relative;
+  width: 102%;
+  margin-top: -2%;   
+}
+
 .headerLogo {
-		position: Absolute;  
+		  height: 125px;
+  width: 125px;
 	float: left; 
 }
 .TestTitle {
@@ -81,7 +90,7 @@ select {
 .NavigationMenu {
 	position: relative; 
 	top: -25px; 
-	left: 75px; 
+	left: 75px;  
 	
 }
 .NavigationMenu li {

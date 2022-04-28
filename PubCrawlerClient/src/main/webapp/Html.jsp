@@ -12,28 +12,28 @@
 <link rel="stylesheet" href="css/StyleSheet.css">
 </head>
 <body>
-	<div>
-		<img class=headerLogo src="css/PubCrawlerLogo.jpg" alt="">
-	</div>
-	<h1 class="header1">
-		<span class="pubCrawlerTitle">Pub Crawler </span> <br>
-	</h1>
-	<div>
-		<nav class=NavigationMenu>
-			<ul class=navigationContainer>
-				<li><a href="Html.jsp" class=btnHome>Home </a></li>
-				<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
-				<li><a href="Test.jsp" class=btnTest>Test</a></li>
-			</ul>
-		</nav>
-	</div>
-	<div class="">
-		<h4 class="pubsTitle">Pubs</h4>
-	</div>
-	<div class="">
-		<h4 class="infoTitle">Info about selected pub</h4>
-		<span class="beersTitle">Beers</span> <br>
-	</div>
+		<div class = header> 
+		<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
+		
+		<h1 class="pubCrawlerTitle">Pub Crawler
+		</h1>
+		<div>
+			<nav class=NavigationMenu>
+				<ul class=navigationContainer>
+					<li><a href="Html.jsp" class=btnHome>Home </a></li>
+					<li><a href="AboutHTML.jsp" class=btnAbout>About</a></li>
+					<li><a href="Test.jsp" class=btnTest>Test</a></li>
+				</ul>
+			</nav>
+		</div>
+		</div>
+		<div class="">
+			<h4 class="pubsTitle">Pubs</h4>
+		</div>
+		<div class="">
+			<h4 class="infoTitle">Info about selected pub</h4>
+			<span class="beersTitle">Beers</span> <br>
+		</div>
 	<main>
 		<div class=PubColumn>
 			<div class=container>
@@ -75,7 +75,7 @@
 
 		<form class="BeerForm">
 			<label for="beerName" class="u-label">Brand:</label> <input
-				type="text" placeholder="E.g. Karneöl..." id="beerName" name="name"
+				type="text" placeholder="E.g. KarneÃ¶l..." id="beerName" name="name"
 				class="placeholders">
 			<div>
 				<label for="beerPrice" class="u-label">Price:</label> <input

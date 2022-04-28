@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="css/Test.css">
 </head>
 <body>
-<div> 
+		<div class = header>  
 	<img class = headerLogo src ="css/PubCrawlerLogo.jpg" alt="">
-		</div>
+		
 <h1 class="header1">
 			<span class="TestTitle">Test of PubCrawler </span> <br>
 		</h1>
