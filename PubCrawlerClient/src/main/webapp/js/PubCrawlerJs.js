@@ -143,7 +143,7 @@ $(document).ready(function() {
 		}
 	})//btnclick
 	$("#deleteBeer").click(function() {
-		var beerName = document.getElementById("selectedBeer").innerText;
+		var beerName = document.getElementById("selectedBeer").name;
 		var obj = { beerName: beerName, beerPrice: beerPrice, beerType: beerType, kind: "Beer" };
 		var jsonString = JSON.stringify(obj);
 		if (beerName != "") {
@@ -168,7 +168,7 @@ $(document).ready(function() {
 
 	$("#addBeerToPub").click(function() {
 		pubName = document.getElementById("pubInfo").innerText;
-		beerName = document.getElementById("selectedBeer").innerText;
+		beerName = document.getElementById("selectedBeer").name;
 		var obj = { kind: "beerToPub", pubName: pubName, beerName: beerName };
 		var jsonString = JSON.stringify(obj);
 		$.ajax({
@@ -219,7 +219,7 @@ function getPubs() {
 			var button = document.createElement("button")
 			button.setAttribute("class", "pubButton");
 			button.setAttribute("name", e.pubName);
-			button.setAttribute("onclick", "buttonClick(this.name)");
+			button.setAttribute("onclick", "buttonClick(this.name, this.id)");
 			var br = document.createElement("br")
 			button.innerText = e.pubName;
 			ul.append(button);
@@ -247,7 +247,8 @@ function getBeers() {
 			var button = document.createElement("button");
 			button.setAttribute("class", "beerButton");
 			button.setAttribute("name", e.beerName);
-			button.setAttribute("onclick", "beerButtonClicked(this.name)");
+			button.setAttribute("id", e.beerPrice + "kr - " + e.beerType);
+			button.setAttribute("onclick", "beerButtonClicked(this.name, this.id)");
 			var br = document.createElement("br");
 			button.innerText = e.beerName;
 			ul.append(button);
@@ -323,9 +324,10 @@ function buttonClick(String) {
 	getPubInfo(String);
 }
 
-function beerButtonClicked(String) {
+function beerButtonClicked(name, priceAndType) {
 	var selectedBeer = document.getElementById("selectedBeer");
-	selectedBeer.innerText = String;
+	selectedBeer.innerText = name + " " + priceAndType;
+	selectedBeer.name = name;
 }
 
 function clicked() {

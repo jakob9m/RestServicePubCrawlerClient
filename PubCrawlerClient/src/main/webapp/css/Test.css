@@ -51,6 +51,20 @@ body {
   background-color: #3A3A3A;
 }
 
+select {
+	position: relative; 
+	width: 25%;
+	float: left;
+	height: 400px; 
+	 left: 175px;
+	 top: 0px;  
+	  background-color: transparent;
+	  font-size: 16px; 
+  	border-radius: 10px;
+  	color: cdb863; 
+  	border-color: transparent; 
+  	
+}
 
 .TestingButton:focus {
  outline: none;
@@ -62,7 +76,7 @@ body {
 	width: 150px;
 	height: 50px;
 	top: 345px; 
-	left: 312px; 
+	left: 40px; 
 	cursor: pointer;
 	border-radius: 10px;
 	font-size: 22px;

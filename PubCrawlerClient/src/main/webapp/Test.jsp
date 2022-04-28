@@ -19,10 +19,12 @@
 					<li><a href="Test.jsp" class=btnTest>Test</a></li>
 				</ul>
 			</nav>
-			</div>
-		<div class=TestColumn>Testing...
-			</div>
-			<input type="button" class= TestingButton id="TestBtn" Value = "Test"> 
+			<form class=TestColumn action="TestServlet" method="get" name="youPickItForm">
+		<select name="suite"  multiple>
+			<option value="ics.junit.ejb.FacadeTest">
+				Testa Facade</option>
+		</select> <input type="submit" class ="TestingButton" value="Run" />
+	</form>
 			<footer>
 		<p class=footerText>Copyright &copy; PubCrawler.com</p>
 	</footer>
