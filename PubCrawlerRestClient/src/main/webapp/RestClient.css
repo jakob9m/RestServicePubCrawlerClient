@@ -1,0 +1,59 @@
+.restButton1 {
+	position: relative;
+	top: 50px;
+	right: -400px;
+	background-color: #4CAF50;
+	opacity: 60%;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 10px;
+	background-color: #4CAF50;
+}
+
+.restButton2 {
+	position: relative;
+	top: 3px;
+	right: -600px;
+	background-color: #4CAF50;
+	opacity: 60%;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 10px;
+}
+
+.restButton3 {
+	position: relative;
+	top: -45px;
+	right: -800px;
+	background-color: #4CAF50;
+	opacity: 60%;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 10px;
+}
+
+.resultArea {
+	position: relative;
+	background-color: gray;
+	opacity: 90%;
+	padding: 20px;
+	border-radius: 10px;
+	width: 300px;
+	top: 100px;
+	left: 400px;
+}

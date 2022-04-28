@@ -87,6 +87,12 @@ public class PubCrawlerEAOImpl implements PubCrawlerEAOImplLocal {
 		return beersPerPub;
 	}
 	
+	public ArrayList<Serves>getAllServes(){
+		TypedQuery<Serves> tq = em.createNamedQuery("Serves.findAllServes", Serves.class);
+		ArrayList<Serves> serves = (ArrayList<Serves>) tq.getResultList();
+		return serves;
+	}
+	
 	public Serves createServes(Serves serves) {
 		em.persist(serves);
 		return serves;
