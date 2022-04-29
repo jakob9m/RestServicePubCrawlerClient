@@ -5,9 +5,13 @@ $(document).ready(function() {
 		document.getElementById("pubInfo").innerText = "Info about selected pub";
 		document.getElementById("pubAddressHeader").innerText = "Address";
 		document.getElementById("selectedBeer").innerText = "";
+		document.getElementById("SB").innerText = "";
+		document.getElementById("SP").innerText = "";
+
+
 	};
 
-	$("#addPub").click(function() {
+/*	$("#addPub").click(function() {
 		var pubName = $("#pubName").val();
 		var pubAddress = $("#pubAddress").val();
 		var obj = { pubName: pubName, location: pubAddress, vibeName: "Cozy", kind: "Pub" };
@@ -31,9 +35,9 @@ $(document).ready(function() {
 				console.log("Ajax: " + status);
 			}
 		}
-	})//addbtnclick
+	})//addbtnclick*/
 
-	$("#addBeer").click(function() {
+	/*$("#addBeer").click(function() {
 		var beerName = $("#beerName").val();
 		var beerPrice = $("#beerPrice").val();
 		var beerType = $("#beerType").val();
@@ -186,7 +190,7 @@ $(document).ready(function() {
 			console.log(status);
 			console.log("Ajax-find beers: " + status);
 		}
-	})
+	})*/
 
 	$.ajax({
 		method: "GET",
@@ -207,7 +211,7 @@ function getPubs() {
 	var obj = { kind: "Pubs" };
 	var jsonString = JSON.stringify(obj);
 	$.ajax({
-		method: "POST",
+		method: "DELETE",
 		data: jsonString,
 		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
 		error: ajaxFindReturnError,
@@ -235,7 +239,7 @@ function getBeers() {
 	var obj = { kind: "Beers" };
 	var jsonString = JSON.stringify(obj);
 	$.ajax({
-		method: "POST",
+		method: "DELETE",
 		data: jsonString,
 		url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
 		error: ajaxFindReturnError,
@@ -322,54 +326,23 @@ function buttonClick(String) {
 	var pubInf = document.getElementById("pubInfo");
 	pubInf.innerText = String;
 	getPubInfo(String);
+	var SP = document.getElementById("SP");
+	SP.setAttribute("value", String);
 }
 
 function beerButtonClicked(name, priceAndType) {
 	var selectedBeer = document.getElementById("selectedBeer");
+	var SB = document.getElementById("SB");
 	selectedBeer.innerText = name + " " + priceAndType;
 	selectedBeer.name = name;
+	SB.setAttribute("value", name);
+	
 }
 
 function clicked() {
 	button.classList.toggle('active');
 }
 
-
-
-/*function ParseJsonFileWeather(result) {
-	var lat = result.latitude;
-	var long = result.longitude;
-	var city = result.city;
-	var ipNbr = result.ip
-	$("#city").text(city);
-	$("#ipNbr").text(ipNbr);
-	$.ajax({
-		method: "GET",
-		url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&units=metric" + "&APPID=596717b4887c33b3bd6ba716600cc198",
-		error: ajaxWeatherReturn_Error,
-		success: ajaxWeatherReturn_Success
-	})
-
-	function ajaxWeatherReturn_Success(result, status, xhr) {
-		var sunrise = result.sys.sunrise;
-		var sunset = result.sys.sunset;
-
-		var sunriseDate = new Date(sunrise * 1000);
-		var timeStrSunrise = sunriseDate.toLocaleTimeString("sv-SE");
-		var sunsetDate = new Date(sunset * 1000);
-		var timeStrSunset = sunsetDate.toLocaleTimeString("sv-SE");
-
-		$("#sunrise").text("Sunrise: " + timeStrSunrise);
-		$("#sunset").text("Sunset: " + timeStrSunset);
-
-		$("#weather").text(result.weather[0].main);
-
-		$("#degree").text(result.main.temp + " \u2103");
-	}//ajaxWeatherReturn_Success
-
-	function ajaxWeatherReturn_Error(result, status, xhr) {
-		console.log("API-Weather: " + status);
-	}*/
 	       $(document).ready(function () {
         $.ajax({
             method: "GET",
@@ -418,7 +391,6 @@ function clicked() {
 
         function ajaxWeatherReturn_Error(result, status, xhr) {
             console.log("Error i OpenWeaterMap Ajax");
-            console.log("Ajax-find movie: " + status);
         }
     }
 	

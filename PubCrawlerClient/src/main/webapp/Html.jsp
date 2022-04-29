@@ -45,7 +45,7 @@
 			<ul id="beerList"></ul>
 		</div>
 		<div class="ServesColumn">
-			<h2 class=ServesPubInfo id="pubInfo"></h2>
+			<h2 class=ServesPubInfo id="pubInfo" name="pubInfo"></h2>
 			<h3 class=PubAddressHeader id="pubAddressHeader">Address</h3>
 			<p class=ServesTitle>This pub serves:</p>
 			<ul class=servesLists id="servesList"></ul>
@@ -73,45 +73,45 @@
 			</table>
 		</aside>
 
-		<form class="BeerForm">
+		<form class="BeerForm" action="/PubCrawlerClient/PubCrawlerServerlet" method="post">
 			<label for="beerName" class="u-label">Brand:</label> <input
-				type="text" placeholder="E.g. Karneöl..." id="beerName" name="name"
+				type="text" placeholder="E.g. Karneöl..." id="beerName" name="beerName"
 				class="placeholders">
 			<div>
 				<label for="beerPrice" class="u-label">Price:</label> <input
-					type="text" placeholder="E.g. 25 Kr..." id="beerPrice" name="price"
+					type="text" placeholder="E.g. 25 Kr..." id="beerPrice" name="beerPrice"
 					class="placeholders">
 			</div>
 			<label for="beerType" class="u-label">Type: </label> <input
-				type="text" placeholder="E.g. Lager..." id="beerType" name="type"
+				type="text" placeholder="E.g. Lager..." id="beerType" name="beerType"
 				class="placeholders">
 			<div>
-				<br> <br> <input type="button" value="Add Beer"
-					id="addBeer" class="crudButtonsBeer"><br> <br> <input
-					type="button" class="crudButtonsBeer" id="updateBeer"
-					value="Update selected beer"><br> <br> <input
-					type="button" class="crudButtonsBeer" id="deleteBeer"
-					value="Delete selected Beer"><br>
+				<br> <br> 
+				<input type="submit" name="operation" value="Add beer" id="addBeer" class="crudButtonsBeer"><br> <br> 
+				<input type="submit" name="operation" value="Update selected beer" onclick="selectbeer()" class="crudButtonsBeer" id="updateBeer" ><br> <br> 
+				<input type="submit" name="operation" value="Delete selected beer" onclick="selectbeer()" class="crudButtonsBeer" id="deleteBeer"><br>
+				<input type="hidden" id="SB" name="SB" class="placeholders">				
+	
 			</div>
 		</form>
 
 
-		<form class="PubForm">
-			<label for="pubName" class="u-label">Name:</label> <input type="text"
-				placeholder="E.g Barrbaren...." id="pubName" name="name"
+		<form class="PubForm" action="/PubCrawlerClient/PubCrawlerServerlet" method="post">
+			<label for="pubName" class="u-label">Name:</label> 
+			<input type="text"
+				placeholder="E.g Barrbaren...." id="pubName" name="pubName"
 				class="placeholders">
 			<div>
 				<label for="pubAddress" class="u-label">Address: </label> <input
 					type="text" placeholder="E.g. Examplestreet 1..." id="pubAddress"
-					name="address" class="placeholders">
+					name="pubAddress" class="placeholders">
 			</div>
 			<div>
-				<br> <br> <input type="button" value="Add pub" id="addPub"
-					class="crudButtonsPub"><br> <br> <input
-					type="button" class="crudButtonsPub" id="updatePub"
-					value="Update selected pub"><br> <br> <input
-					type="button" class="crudButtonsPub" id="deletePub"
-					value="Delete selected pub"><br>
+				<br> <br> 
+					<input type="submit" name="operation" value="Add pub" id="addPub" class="crudButtonsPub"><br> <br> 
+					<input type="submit"  name="operation" value="Update selected pub" class="crudButtonsPub" id="updatePub"><br> <br> 
+					<input type="submit" name="operation" value="Delete selected pub" class="crudButtonsPub" id="deletePub"><br>
+					<input type="hidden" id="SP" name="SP" class="placeholders">
 			</div>
 		</form>
 
