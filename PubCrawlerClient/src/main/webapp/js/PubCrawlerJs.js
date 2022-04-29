@@ -413,7 +413,7 @@ function clicked() {
 
             $("#weather").text(result.weather[0].main);
 
-            $("#degree").text(result.main.temp + " \u2103");
+            $("#degree").text((result.main.temp - 273.15).toFixed(2) + " \u2103");
         }//ajaxWeatherReturn_Success 
 
         function ajaxWeatherReturn_Error(result, status, xhr) {
