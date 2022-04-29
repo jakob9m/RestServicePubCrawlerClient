@@ -417,7 +417,7 @@ function clicked() {
         }//ajaxWeatherReturn_Success 
 
         function ajaxWeatherReturn_Error(result, status, xhr) {
-            alert("Error i OpenWeaterMap Ajax");
+            console.log("Error i OpenWeaterMap Ajax");
             console.log("Ajax-find movie: " + status);
         }
     }
