@@ -1,14 +1,10 @@
-
 .header {
 	background-color: black;
-	opacity: 70%;  
-	 position: relative;
-  width: 102%;
-  margin-top: -2%; 
- 
-  
+	opacity: 70%;
+	position: relative;
+	width: 102%;
+	margin-top: -2%;
 }
-
 
 .headerLogo {
 	height: 125px;
@@ -23,10 +19,7 @@ body {
 	background-size: cover;
 	overflow-x: hidden;
 	overflow-y: hidden;
-
 }
-
-
 
 .pubCrawlerTitle {
 	font-weight: 600;
@@ -42,7 +35,6 @@ body {
 	-webkit-text-stroke-color: white;
 	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
 }
-
 
 .u-label {
 	color: white;
@@ -332,7 +324,7 @@ body {
 	border-radius: 20px;
 }
 
-  /* the list of pubs  */
+/* the list of pubs  */
 .buttonColumnLeft {
 	float: right;
 	border: 1px solid black;
@@ -360,7 +352,6 @@ body {
 	left: 405px;
 	top: -750px;
 	width: 241px;
-
 }
 
 .addressLabel {
@@ -434,12 +425,12 @@ body {
 
 .pubsTitle {
 	font-weight: 700;
-	font-size: 2rem;
+	font-size: 2.1rem;
 	letter-spacing: 0.1em;
 	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke-width: 3px;
-	-webkit-text-stroke-color: white;
-	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+	/*-webkit-text-stroke-width: 3px;  */
+	/* -webkit-text-stroke-color: white; */
+	text-shadow: 7px 7px #cdb863, 10px 10px #000000;
 	margin: -4px calc((( 100% - 1140px)/2)+ 19px) 0 auto;
 	position: relative;
 	left: 200px;
@@ -448,30 +439,30 @@ body {
 
 .beersTitle {
 	font-weight: 700;
-	font-size: 2rem;
+	font-size: 2.1rem;
 	margin: 0 auto;
 	position: relative;
 	left: 1500px;
 	top: -75px;
 	letter-spacing: 0.1em;
 	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke-width: 3px;
-	-webkit-text-stroke-color: white;
-	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+	/*-webkit-text-stroke-width: 3px;  */
+	/* -webkit-text-stroke-color: white; */
+	text-shadow: 7px 7px #cdb863, 10px 10px #000000;
 }
 
 .infoTitle {
-	font-weight: 700;
-	font-size: 2rem;
+	font-weight: 900;
+	font-size: 2.1rem;
 	margin: 0 auto;
 	position: relative;
-	left: 700px;
-	top: -70px;
+	left: 680px;
+	top: -65px;
 	letter-spacing: 0.1em;
 	-webkit-text-fill-color: transparent;
-	-webkit-text-stroke-width: 3px;
-	-webkit-text-stroke-color: white;
-	text-shadow: 8px 8px #cdb863, 20px 20px #000000;
+	/*-webkit-text-stroke-width: 3px;  */
+	/* -webkit-text-stroke-color: white; */
+	text-shadow: 8px 8px #cdb863, 10px 10px #000000;
 }
 
 .PubTable {
@@ -502,7 +493,7 @@ aside {
 	height: 150%;
 	background-color: transparent;
 	border-radius: 10px;
-	opacity: 100%; 
+	opacity: 100%;
 }
 
 #asideTable {
