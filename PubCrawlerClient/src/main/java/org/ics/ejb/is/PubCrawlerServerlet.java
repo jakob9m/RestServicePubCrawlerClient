@@ -39,28 +39,13 @@ public class PubCrawlerServerlet extends HttpServlet {
 			throws ServletException, IOException {
 		String url = null;
 		url = "/Html.jsp";
-		
-		ArrayList<String> pubNames = new ArrayList<String>();
-		ArrayList<Pub> pubs = facade.getAllPubs();
-		for(Pub pub : pubs){
-			String pubName = pub.getpubName();
-			pubNames.add(pubName);
-		}
-		
-		request.setAttribute("allPubs", pubNames);
-		
-		ArrayList<String> beerNames = new ArrayList<String>();
-		ArrayList<Beer> beers = facade.getAllBeers();
-		for(Beer beer : beers){
-			String beerName = beer.getBeer();
-			beerNames.add(beerName);
-		}
-		request.setAttribute("allBeers", beerNames);
+				
+		ArrayList<Beer> allBeers = facade.getAllBeers();
+		request.setAttribute("getAllBeers", allBeers);
 
 		ArrayList<Pub> allPubs = facade.getAllPubs();		
 		request.setAttribute("getAllPubs", allPubs);
 
-		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
@@ -71,8 +56,6 @@ public class PubCrawlerServerlet extends HttpServlet {
 		String url = null;
 		String operation = request.getParameter("operation");
 		url = "/Html.jsp";
-		
-		System.out.println(request.getParameter("selectedBeerReal"));
 		
 		if (operation.equals("Add pub")) {
 			try {
@@ -101,6 +84,7 @@ public class PubCrawlerServerlet extends HttpServlet {
 			try {
 				p.setLocation(request.getParameter("pubAddress"));
 				p = facade.updatePub(p);
+				url = "/Html.jsp";
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
@@ -110,26 +94,40 @@ public class PubCrawlerServerlet extends HttpServlet {
 				b.setPrice(Integer.parseInt(request.getParameter("beerPrice")));
 				b.setType(request.getParameter("beerType"));
 				b = facade.updateBeer(b);
+				url = "/Html.jsp";
 			} catch (Exception e) {
 				System.out.println("facade Update Error");
 			}
 		} else if (operation.equals("Delete selected pub")) {
 			try {
+				System.out.println(request.getParameter("SP"));
 				facade.deletePub(request.getParameter("SP"));
+				url = "/Html.jsp";
 			} catch (Exception e) {
 				System.out.println("Deletion failed for pub");
 			}
 		} else if (operation.equals("Delete selected beer")) {
 			try {
-				facade.deleteBeer(request.getParameter("SB"));
-								
+				facade.deleteBeer(request.getParameter("selectedPub"));
+				url = "/Html.jsp";				
+			} catch (Exception e) {
+				System.out.println("Deletion failed for beer");
+			}
+		} else if (operation.equals("pubListInput")) {
+			try {
+				String selectedPub = request.getParameter("pubListInput");
+				System.out.println(selectedPub);
+				request.setAttribute("selectedPub", selectedPub);
+				url = "/Html.jsp";				
 			} catch (Exception e) {
 				System.out.println("Deletion failed for beer");
 			}
 		} else {
 			System.out.println(operation);
+			url = "/Html.jsp";
 		}
-
+		
+		url = "/Html.jsp";
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

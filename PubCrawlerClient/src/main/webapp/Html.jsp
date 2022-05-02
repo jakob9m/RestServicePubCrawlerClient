@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="org.ics.ejb.Beer"%>
 <%@page import="org.ics.facade.Facade"%>
 <%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
 <%@page import="org.ics.ejb.Pub"%>
@@ -12,9 +13,8 @@
 <meta charset="utf-8">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
-	
 </script>
-<!-- <script src="js/PubCrawlerJs.js"></script> -->
+<script src="js/PubCrawlerJs.js"></script>
 <title>Pub Crawler</title>
 <link rel="stylesheet" href="css/StyleSheet.css">
 </head>
@@ -45,13 +45,14 @@
 		<div class=PubColumn>
 			<div class=container>
 				<ul id="pubList"></ul>
-		<% ArrayList<Pub> pubs = (ArrayList<Pub>)request.getAttribute("getAllPubs");%>
-		<% for(Pub pub : pubs){ %>
+ 		<% ArrayList<Pub> pubs = (ArrayList<Pub>)request.getAttribute("getAllPubs");%>
+		<% if(pubs != null){
+			for(Pub pub : pubs){ %>
 		<%String pubName = pub.getpubName(); %>
 		<%String pubAddress = pub.getLocation(); %>
-			<button class="pubButton" name="<%=pubName%>" id="<%=pubAddress%>" onclick="buttonClick(<%=pubName%>, <%=pubAddress%>)"><%=pubName%></button>
-		<% }%>
-				<input type="hidden" id="pubListInput" name="pubListInput" class="placeholders">
+			<button type="button" class="pubButton" name="<%=pubName%>" id="pubButton" value="<%=pubAddress%>" onclick="pubClick(<%=pubName%>, <%=pubAddress%>)"><%=pubName%></button>
+		<% }}%>
+
 			</div>
 		</div>	
 	</form>
@@ -60,24 +61,27 @@
 		<div class=BeerColumn>
 			<p class=selectedBeer id="selectedBeer">Info about selected Beer:</p>
 			<ul id="beerList"></ul>
-		<% ArrayList<String> beerNames = (ArrayList<String>)request.getAttribute("allBeers");%>
-		<% for(String beer : beerNames){ %>
-			<button class="pubButton"><%=beer%></button>
-		<% }%>
+		<% ArrayList<Beer> beers = (ArrayList<Beer>)request.getAttribute("getAllBeers");%>
+		<%if(beers != null){ 
+		for(Beer beer : beers){ %>
+		<%	String beerName = beer.getBeer();
+			String beerPrice = Integer.toString(beer.getPrice());
+			String beerType = beer.getType();
+		%>
+			<button type="button" class="beerButton" name="<%=beerName%>, <%=beerPrice%>kr, <%=beerType%>" value="<%=beerName%>" id="beerButton"><%=beerName%></button>
+		<%}}%>
 			
 		</div>	
 	</form>
+	<form action="/PubCrawlerClient/PubCrawlerServerlet" method="POST">
 		<div class="ServesColumn">
-		<%-- <%!public void buttonClick(String pubName, String pubAddress){
-			String name = pubName;
-			String address = pubAddress;
-		%>	<h2 class=ServesPubInfo id="pubInfo" name="pubInfo"><%!name%></h2>	
-			<h3 class=PubAddressHeader id="pubAddressHeader"><%!address%></h3>
-		<%!} %> --%>
+		<h2 class=ServesPubInfo id="pubInfo" name="pubInfo">Name</h2>	
+		<h3 class=PubAddressHeader id="pubAddressHeader">Address</h3>
 			<p class=ServesTitle>This pub serves:</p>
 			<ul class=servesLists id="servesList"></ul>
+		</div>	
+	</form>
 
-		</div>
 		<aside>
 			<table id="asideTable">
 				<tr>
