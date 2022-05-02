@@ -1,14 +1,13 @@
 $(document).ready(function() {
 	window.onload = function() {
-		getPubs();
+		
+		/*getPubs();*/
 		getBeers();
 		document.getElementById("pubInfo").innerText = "Info about selected pub";
 		document.getElementById("pubAddressHeader").innerText = "Address";
 		document.getElementById("selectedBeer").innerText = "";
 		document.getElementById("SB").innerText = "";
 		document.getElementById("SP").innerText = "";
-
-
 	};
 
 /*	$("#addPub").click(function() {
@@ -192,6 +191,21 @@ $(document).ready(function() {
 		}
 	})*/
 
+$("#addBeerToPub").click(function() {
+			$.ajax({
+				method: "GET",
+				url: "http://localhost:8080/PubCrawlerClient/PubCrawlerServerlet",
+				error: ajaxDelReturnError,
+				success: ajaxDelReturnSuccess
+			})
+			function ajaxDelReturnSuccess(result, status, xhr) {
+				console.log("Got!")
+			}
+			function ajaxDelReturnError(result, status, xhr) {
+				console.log("Ajax-find: " + status);
+			}
+	})
+
 	$.ajax({
 		method: "GET",
 		url: "http://api.ipstack.com/194.47.249.5?access_key=3f5b716dcff15e58719f97d0b60a0341",
@@ -206,6 +220,7 @@ $(document).ready(function() {
 	}
 
 });//End ready function
+
 
 function getPubs() {
 	var obj = { kind: "Pubs" };

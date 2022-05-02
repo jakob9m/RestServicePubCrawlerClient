@@ -34,10 +34,35 @@ public class PubCrawlerServerlet extends HttpServlet {
 	public PubCrawlerServerlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String url = null;
+		url = "/Html.jsp";
 		
+		ArrayList<String> pubNames = new ArrayList<String>();
+		ArrayList<Pub> pubs = facade.getAllPubs();
+		for(Pub pub : pubs){
+			String pubName = pub.getpubName();
+			pubNames.add(pubName);
+		}
+		
+		request.setAttribute("allPubs", pubNames);
+		
+		ArrayList<String> beerNames = new ArrayList<String>();
+		ArrayList<Beer> beers = facade.getAllBeers();
+		for(Beer beer : beers){
+			String beerName = beer.getBeer();
+			beerNames.add(beerName);
+		}
+		request.setAttribute("allBeers", beerNames);
+
+		ArrayList<Pub> allPubs = facade.getAllPubs();		
+		request.setAttribute("getAllPubs", allPubs);
+
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -132,6 +157,7 @@ public class PubCrawlerServerlet extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println("Något är wack med createServes");
 			}
+			
 		} 
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
